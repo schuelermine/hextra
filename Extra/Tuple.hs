@@ -1,4 +1,4 @@
-{-# LANGUAGE RankNTypes, ConstraintKinds, MultiParamTypeClasses, KindSignatures, AllowAmbiguousTypes #-}
+{-# LANGUAGE RankNTypes, ConstraintKinds, KindSignatures, AllowAmbiguousTypes #-}
 
 module Extra.Tuple (dupe, mapAll, mapAll', mapAllC, mapAllB, tSort, tSort', tReverse) where
 -- For mapAll and its cousins, consider importing Extra.Bifunctor instead
