@@ -32,16 +32,16 @@ Most projects, actually, are stored inside this folder, since it helps me to avo
 
 ### Explaining files
 
-##### notesonhaskell.txt
+#### notesonhaskell.txt
 
 *Inconsequential* ramblings, notes, and other stuff.
 
-##### Numberguessing.hs
+#### Numberguessing.hs
 
 Generic number guessing game. In progress, I want to make some modules to allow me to get an arbitrary number of command-line arguments.
 Will be invoked with two arguments denoting the lower and upper bounds of the number to be guessed.
 
-##### Data/Cirq.hs
+#### Data/Cirq.hs
 
 `Data.Cirq`
 
@@ -50,32 +50,32 @@ Exports all functions defined in the modules in the `Cirq` *folder* as a neat, c
 Don't import alongside the other Cirq modules.
 No reason for that, it's just bad style and bad practice.
 
-##### Data/Cirq/Full.hs
+#### Data/Cirq/Full.hs
 
 `Data.Cirq.Full`
 
 Defines the Cirq type and the basic primitives.
 
-##### Data/Cirq/Basic.hs
+#### Data/Cirq/Basic.hs
 
 `Data.Cirq.Basic`
 
 Reexports some of the functions from `Data.Cirq.Full`, but not the "low-level" ones.
 
-##### Data/Cirq/Utils.hs
+#### Data/Cirq/Utils.hs
 
 `Data.Cirq.Utils`
 
 Defines some utility `Cirq`s.
 Maybe a bad name?
 
-##### Data/Cirq/Tools.hs
+#### Data/Cirq/Tools.hs
 
 `Data.Cirq.Tools`
 
 Defines some tools for manipulating `Cirq`s
 
-##### Data/Cirq/Deprecated.hs
+#### Data/Cirq/Deprecated.hs
 
 `Data.Cirq.Deprecated`
 
@@ -85,7 +85,7 @@ Thinking of either deleting this or moving it to its own folder, so other folder
 Doesn't export anything.
 Has a `module` header so the compiler stops complaining about the missing `main`.
 
-##### Data/Nat.hs
+#### Data/Nat.hs
 
 `Data.Nat`
 
@@ -95,7 +95,7 @@ Import qualified.
 
 TODO: Write div, mod etc.
 
-##### Data/Nat/Kind.hs
+#### Data/Nat/Kind.hs
 
 `Data.Nat.Kind`
 
@@ -103,7 +103,7 @@ Defines the type families needed to make type-level natural numbers work.
 
 Requires UndecidableInstances, TypeOperators and DataKinds.
 
-##### Data/Vector.hs
+#### Data/Vector.hs
 
 `Data.Vector`
 
@@ -115,7 +115,7 @@ Uses GADTs and KindSignatures
 
 TODO: Consider if NoImplicitPrelude is necessary.
 
-##### Extra/Tuple.hs
+#### Extra/Tuple.hs
 
 `Extra.Tuple`
 
@@ -125,7 +125,7 @@ I think I heard someone say once on a forum (StackOverflow?) that a function lik
 Some functions require RankNTypes and AllowAmbiguousTypes.
 Uses KindSignatures and ConstraintKinds.
 
-##### Extra/Bifunctor.hs
+#### Extra/Bifunctor.hs
 
 `Extra.Bifunctor`
 
@@ -134,27 +134,27 @@ Defines some of the functions from `Extra.Tuple` more generally, so they work on
 Most functions require RankNTypes and AllowAmbiguousTypes.
 Uses KindSignatures and ConstraintKinds.
 
-##### Extra/CirqUnpaced.hs
+#### Extra/CirqUnpaced.hs
 
 `Extra.CirqUnpacked`
 
 Defines functions that run `Cirq`s from `Data.Cirq.Utils` on lists using `cqRun` from `Data.Cirq.Full`.
 
-##### Extra/Function.hs
+#### Extra/Function.hs
 
 `Extra.Function`
 
 Defines useful functions for manipulating functions.
 Currently only defines higher-valence versions of `curry` and `uncurry`.
 
-##### Extra/Maybe.hs
+#### Extra/Maybe.hs
 
 `Extra.Maybe`
 
 Defines semi-useful functions concerning Maybe values.
 They mostly just rid the values of their Maybe-ness.
 
-##### Extra/Safe.hs
+#### Extra/Safe.hs
 
 `Extra.Safe`
 
