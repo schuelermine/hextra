@@ -1,6 +1,6 @@
 {-# LANGUAGE NoImplicitPrelude #-}
 
-module Data.Nat.Internal (N(Z, S), (+), (*), (-), zero, one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve) where
+module Data.Nat.Internal (N(Z, S), (+), (*), (-), toInteger, fromInteger, quotRem, quot, rem, zero, one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve) where
 -- Defines natural numbers and operations on them
 -- TODO: Write div and mod
 
@@ -57,8 +57,8 @@ fromInteger n = case Base.compare 0 n of
 quotRem :: N -> N -> (N, N)
 quotRem = mapAll fromInteger .> Base.quotRem <. toInteger
 
-quot = fst . quotRem
-rem = snd . quotRem
+quot = Base.fst .> quotRem
+rem = Base.snd .> quotRem
 
 -- Named numbers (up to 12):
 
