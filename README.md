@@ -14,6 +14,7 @@
         * Utils.hs
         * Tools.hs
         * Deprecated.hs
+    * Nat.hs
     * Nat
       * Internal.hs
       * Instances.hs
@@ -85,6 +86,11 @@ Thinking of either deleting this or moving it to its own folder, so other folder
 
 Doesn't export anything.
 Has a `module` header so the compiler stops complaining about the missing `main`.
+
+#### Data/Nat.hs
+
+Exports instances and definitions from modules in the `Nat` *folder*.
+Does not conflict with Prelude.
 
 #### Data/Nat/Internal.hs
 
