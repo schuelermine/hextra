@@ -50,9 +50,9 @@ toInteger (S n) = 1 Base.+ toInteger n
 
 fromInteger :: Base.Integer -> N
 fromInteger n = case Base.compare 0 n of
-    Base.GT -> fromInteger (n Base.- 1)
+    Base.GT -> S Base.$ fromInteger (n Base.+ 1)
     Base.EQ -> Z
-    Base.LT -> fromInteger (n Base.+ 1)
+    Base.LT -> S Base.$ fromInteger (n Base.- 1)
 
 quotRem :: N -> N -> (N, N)
 quotRem = mapAll fromInteger .> Base.quotRem <. toInteger
