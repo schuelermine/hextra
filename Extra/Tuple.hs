@@ -1,6 +1,6 @@
 {-# LANGUAGE RankNTypes, ConstraintKinds, KindSignatures, AllowAmbiguousTypes #-}
 
-module Extra.Tuple (dupe, mapAll, mapAll', mapAllC, mapAllB, tSort, tSort', tReverse) where
+module Extra.Tuple (dupe, dupe', dupeC, mapAll, mapAll', mapAllC, mapAllB, tSort, tSort', tReverse) where
 -- For mapAll and its cousins, consider importing Extra.Bifunctor instead
 -- To solely import dupe, write import Extra.Tuple (dupe)
 
@@ -26,6 +26,16 @@ dupe a = (a, a)
 -- Creates a tuple with identical elements
 -- "duplicates" the value
 
+dupe' :: forall b c. (forall a. a) -> (b, c)
+dupe' a = (a, a)
+-- Creates a tuple from a universally polymorphic value.
+-- Like dupe, but for universally polymorphic values.
+-- universally polymorphic = exists for any type
+
+dupeC :: forall (f :: * -> Constraint) b c. (f b, f c) => (forall a. f a => a) -> (b, c)
+-- Like dupe and dupe', but for constrainedly polymorphic values, results in a constrainedly polymorphic tuple.
+-- constrained = instance of a given class, or here, in the case of a tuple, containing them.
+
 mapAll :: (a -> b) -> (a, a) -> (b, b)
 mapAll f (x, y) = (f x, f y)
 -- Maps a function onto a homogenous tuple
@@ -36,7 +46,7 @@ mapAll' f (x, y) = (f x, f y)
 -- Maps a universally polymorphic over any (even heterogenous) tuple
 -- universally polymorphic = works for any type
 
-mapAllC :: forall b (f :: * -> Constraint) x y. (f x, f y) => (forall a. f a => a -> b) -> (x, y) -> (b, b)
+mapAllC :: forall (f :: * -> Constraint) b x y. (f x, f y) => (forall a. f a => a -> b) -> (x, y) -> (b, b)
 mapAllC f (x, y) = (f x, f y)
 -- Maps a constrainedly polymorphic over a constrained tuple
 -- constrained = instance of a given class, or here, in the case of a tuple, containing them.
