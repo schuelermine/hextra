@@ -33,6 +33,7 @@ dupe' a = (a, a)
 -- universally polymorphic = exists for any type
 
 dupeC :: forall (f :: * -> Constraint) b c. (f b, f c) => (forall a. f a => a) -> (b, c)
+dupeC a = (a, a)
 -- Like dupe and dupe', but for constrainedly polymorphic values, results in a constrainedly polymorphic tuple.
 -- constrained = instance of a given class, or here, in the case of a tuple, containing them.
 

@@ -4,6 +4,10 @@ module Data.Nat (N(Z, S), (+), (*), (-), zero, one, two, three, four, five, six,
 -- Defines natural numbers and operations on them
 -- TODO: Write div and mod
 
+import qualified Prelude as Base
+import Extra.Function
+import Extra.Tuple
+
 data N = Z | S N
 -- Inductive natural number type
 -- Z is 0, S is the successor function
@@ -39,6 +43,19 @@ Z     - y     = y
 -- This exploit the fact that,
 -- if you add something to two numbers, the difference stays the same
 -- Peels away a layer of S on both arguments and then apllies itself again
+
+toInteger :: N -> Base.Integer
+toInteger Z = 0
+toInteger (S n) = 1 Base.+ toInteger n
+
+fromInteger :: Base.Integer -> N
+fromInteger n = case Base.compare 0 n of
+    Base.GT -> fromInteger (n Base.- 1)
+    Base.EQ -> Z
+    Base.LT -> fromInteger (n Base.+ 1)
+
+quotRem :: N -> N -> (N, N)
+quotRem = mapAll fromInteger .> Base.quotRem <. toInteger
 
 -- Named numbers (up to 12):
 
