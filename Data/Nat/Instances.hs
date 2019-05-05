@@ -37,3 +37,8 @@ instance Integral N.N where
     quotRem = N.quotRem
     divMod = N.quotRem
     toInteger = N.toInteger
+
+instance Show N.N where
+    showsPrec x = showsPrec x . N.toInteger
+    show = show . N.toInteger
+    showList = showList . map N.toInteger
