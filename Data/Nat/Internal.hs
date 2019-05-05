@@ -2,7 +2,6 @@
 
 module Data.Nat.Internal (N(Z, S), (+), (*), (-), toInteger, fromInteger, quotRem, quot, rem, zero, one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve) where
 -- Defines natural numbers and operations on them
--- TODO: Write div and mod
 
 import qualified Prelude as Base
 import Extra.Function
@@ -47,18 +46,28 @@ Z     - y     = y
 toInteger :: N -> Base.Integer
 toInteger Z = 0
 toInteger (S n) = 1 Base.+ toInteger n
+-- Converts natural numbers to integers
+-- Z converts to zero, and S converts to +1
 
 fromInteger :: Base.Integer -> N
 fromInteger n = case Base.compare 0 n of
     Base.GT -> S Base.$ fromInteger (n Base.+ 1)
     Base.EQ -> Z
     Base.LT -> S Base.$ fromInteger (n Base.- 1)
+-- Converts integers to natural numbers
+-- Reduces value towards 0 while applying S
+-- Negative integers don't raise errors, but are treated like their positive counterparts.
 
 quotRem :: N -> N -> (N, N)
 quotRem = mapAll fromInteger .> Base.quotRem <. toInteger
+-- Division and Modulo of natural numbers
+-- This just converts them to integers, divides, and converts back
+-- (<.) and (.>) are functions for composing two-argument and one-argument functions
 
 quot = Base.fst .> quotRem
 rem = Base.snd .> quotRem
+-- Division and Modulo of natural numbers, but individually
+-- Just extracts the first and second elemts of the result of quotRem
 
 -- Named numbers (up to 12):
 
