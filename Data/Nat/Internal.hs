@@ -57,6 +57,9 @@ fromInteger n = case Base.compare 0 n of
 quotRem :: N -> N -> (N, N)
 quotRem = mapAll fromInteger .> Base.quotRem <. toInteger
 
+quot = fst . quotRem
+rem = snd . quotRem
+
 -- Named numbers (up to 12):
 
 zero = Z
