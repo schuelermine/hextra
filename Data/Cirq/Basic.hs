@@ -1,5 +1,5 @@
-module Cirq.Basic (Cirq, cqId, cqDot, cqArr, cqFirst, cqRun, cqAccumF, cqAccum) where
+module Data.Cirq.Basic (Cirq, cqId, cqDot, cqArr, cqFirst, cqRun, cqAccumF, cqAccum) where
 -- Only reexports high-level functions
 -- Useful when you want to make sure Cirqs behave
 
-import Cirq.Full
+import Data.Cirq.Full

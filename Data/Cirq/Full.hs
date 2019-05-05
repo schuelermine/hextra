@@ -1,6 +1,6 @@
 {-# LANGUAGE Arrows #-}
 
-module Cirq.Full (Cirq(Cirq), unCirq, cqId, cqDot, cqArr, cqFirst, cqRun, cqAccumF, cqAccum) where
+module Data.Cirq.Full (Cirq(Cirq), unCirq, cqId, cqDot, cqArr, cqFirst, cqRun, cqAccumF, cqAccum) where
 -- Defines Cirq, an Arrow that always produces a replacement for itself.
 -- Useful for iterating through lists, easily combinable thanks to Arrow
 
