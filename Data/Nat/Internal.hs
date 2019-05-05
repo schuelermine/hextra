@@ -1,6 +1,6 @@
 {-# LANGUAGE NoImplicitPrelude #-}
 
-module Data.Nat (N(Z, S), (+), (*), (-), zero, one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve) where
+module Data.Nat.Internal (N(Z, S), (+), (*), (-), zero, one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve) where
 -- Defines natural numbers and operations on them
 -- TODO: Write div and mod
 
