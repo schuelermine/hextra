@@ -5,6 +5,7 @@ module Data.Vector (Vector(Nil, Con), N(Z, S), toList) where
 -- Useful when you want to make sure things similar to (!!) or take always work
 
 import Data.Nat
+import Data.Nat.Kind
 
 data Vector :: N -> * -> * where
     Nil :: Vector 'Z a
@@ -14,7 +15,11 @@ data Vector :: N -> * -> * where
 -- The empty list has a length of zero, and the cons operator adds one
 
 toList :: Vector n a -> [a]
-toList Nil = []
-toList (Con x xs) = x : toList xs
+toList Nil          = []
+toList (Con x xs)   = x : toList xs
 -- Turns a Vector into a list
 -- Discards information about the length on the type level
+
+append :: Vector n a -> Vector m a -> Vector (n + m) a
+append Nil ys           = a
+append (Con x xs) ys    = Con x (xs ++ ys)
