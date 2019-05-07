@@ -1,6 +1,6 @@
 {-# LANGUAGE Arrows #-}
 
-module Data.Cirq.Full (Cirq(Cirq), unCirq, cqId, cqDot, cqArr, cqFirst, cqRun, cqAccumF, cqAccum) where
+module Data.Cirq.Base (Cirq(Cirq), unCirq, cqId, cqDot, cqArr, cqFirst, cqRun, cqAccumF, cqAccum) where
 -- Defines Cirq, an Arrow that always produces a replacement for itself.
 -- Useful for iterating through lists, easily combinable thanks to Arrow
 
@@ -65,3 +65,46 @@ cqAccumF k f = Cirq $ \a ->
 cqAccum :: k -> (a -> k -> k) -> Cirq a k
 cqAccum k f = cqAccumF k (\a b -> dupe (f a b))
 -- Like cqAccumF, but the output value is the accumulator
+
+-- Instances for N:
+
+instance Num N where
+    (+) = (+)
+    (-) = (-)
+    (*) = (*)
+    fromInteger = fromInteger
+    negate = P.id
+    abs = P.id
+    signum = P.const one
+
+instance P.Eq N where
+    Z     == Z     = P.True
+    Z     == _     = P.False
+    _     == Z     = P.False
+    (S x) == (S y) = x Base.== y
+
+instance P.Ord N where
+    compare  Z     Z    = P.EQ
+    compare  Z     _    = P.LT
+    compare  _     Z    = P.GT
+    compare (S x) (S y) = P.compare x y
+
+instance P.Enum N where
+    succ = S
+    pred Z = Z
+    pred (S x) = x
+    fromEnum = P.fromInteger . toInteger
+    toEnum = P.fromIntegral
+
+instance P.Real N where
+    toRational = P.toRational . toInteger
+
+instance P.Integral N where
+    quotRem = quotRem
+    divMod = quotRem
+    toInteger = toInteger
+
+instance P.Show N where
+    showsPrec x = P.showsPrec x . toInteger
+    show = show . toInteger
+    showList = P.showList . P.map toInteger

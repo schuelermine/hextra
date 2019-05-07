@@ -3,6 +3,6 @@ module Cirq (Cirq(Cirq), unCirq, cqId, cqDot, cqArr, cqFirst, cqRun, cqAccumF, c
 -- * Does not define functions not defined in other Cirq modules
 -- * Other Cirq modules do not define functions not exported here
 
-import Cirq.Full
+import Cirq.Base
 import Cirq.Tools
 import Cirq.Utils
