@@ -121,3 +121,46 @@ ten = S nine
 eleven = S ten
 
 twelve = S eleven
+
+-- Instances of N:
+
+instance Num N where
+    (+) = (+)
+    (-) = (-)
+    (*) = (*)
+    fromInteger = fromInteger
+    negate = P.id
+    abs = P.id
+    signum = P.const one
+
+instance Eq N where
+    Z     == Z     = P.True
+    Z     == _     = P.False
+    _     == Z     = P.False
+    (S x) == (S y) = x P.== y
+
+instance Ord N where
+    compare  Z     Z    = P.EQ
+    compare  Z     _    = P.LT
+    compare  _     Z    = P.GT
+    compare (S x) (S y) = P.compare x y
+
+instance Enum N where
+    succ = S
+    pred Z = Z
+    pred (S x) = x
+    fromEnum = P.fromInteger P.. toInteger
+    toEnum = P.fromIntegral
+
+instance Real N where
+    toRational = P.toRational P.. toInteger
+
+instance Integral N where
+    quotRem = quotRem
+    divMod = quotRem
+    toInteger = toInteger
+
+instance Show N where
+    showsPrec x = P.showsPrec x P.. toInteger
+    show = P.show . toInteger
+    showList = P.showList P.. map toInteger
