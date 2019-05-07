@@ -1,6 +1,6 @@
 {-# LANGUAGE NoImplicitPrelude #-}
 
-module Data.Nat.Internal (N(Z, S), (+), (*), (-), toInteger, fromInteger, quotRem, quot, rem, zero, one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve) where
+module Data.Nat.Base (N(Z, S), (+), (*), (-), toInteger, fromInteger, quotRem, quot, rem, zero, one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve) where
 -- Defines natural numbers and operations on them
 
 import qualified Prelude as Base
@@ -45,8 +45,8 @@ Z     - y     = y
 -- Peels away a layer of S on both arguments and then apllies itself again
 
 min :: N -> N -> N
-min Z _ = Z
-min _ Z = Z
+min Z _         = Z
+min _ Z         = Z
 min (S x) (S y) = S (min x y)
 -- Finding the smallest of two natural numbers.
 -- Zero is smaller than any other natural number, this is the recursion base case
@@ -54,8 +54,8 @@ min (S x) (S y) = S (min x y)
 -- so you just need to add one.
 
 max :: N -> N -> N
-max Z y = y
-max x Z = x
+max Z y         = y
+max x Z         = x
 max (S x) (S y) = S (max x y)
 -- Finding the largest of two natural numbers.
 -- Any other natural number is larger than zero, this is the recursion base case
@@ -63,7 +63,7 @@ max (S x) (S y) = S (max x y)
 -- so you just need to add one.
 
 toInteger :: N -> Base.Integer
-toInteger Z = 0
+toInteger Z     = 0
 toInteger (S n) = 1 Base.+ toInteger n
 -- Converts natural numbers to integers
 -- Z converts to zero, and S converts to +1

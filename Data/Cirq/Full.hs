@@ -47,7 +47,7 @@ cqFirst = first
 -- if the main program doesn't want to or can't import Control.Arrow
 
 cqRun :: Cirq a b -> [a] -> [b]
-cqRun _ [] = []
+cqRun _ []      = []
 cqRun cq (x:xs) =
     let (cq', y) = unCirq cq x
     in  y : cqRun cq' xs

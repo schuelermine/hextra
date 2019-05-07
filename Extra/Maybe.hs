@@ -2,8 +2,8 @@ module Extra.Maybe (catchNothing, fromNothing) where
 -- Helpful extra functions concerning Maybe
 
 fromNothing :: a -> Maybe a -> a
-fromNothing x Nothing = x
-fromNothing _ (Just y) = y
+fromNothing x Nothing   = x
+fromNothing _ (Just y)  = y
 -- Extracts a value from a Maybe value,
 -- uses replacement value in case of Nothing
 
