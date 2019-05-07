@@ -12,10 +12,10 @@ instance Num N.N where
     signum = const N.one
 
 instance Eq N.N where
-    N.Z     == N.Z      = True
-    N.Z     == _        = False
-    _       == N.Z      = False
-    (N.S x) == (N.S y)  = x == y
+    N.Z     == N.Z     = True
+    N.Z     == _       = False
+    _       == N.Z     = False
+    (N.S x) == (N.S y) = x == y
 
 instance Ord N.N where
     compare  N.Z     N.Z    = EQ

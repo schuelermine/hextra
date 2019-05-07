@@ -3,8 +3,8 @@ module Extra.Safe (Extra.Safe.head, Extra.Safe.tail, Extra.Safe.last, Extra.Safe
 -- Designed to be imported qualified, possibly with the alias Safe
 
 head :: [a] -> Maybe a
-head []     = Nothing
-head (x:_)  = Just x
+head []    = Nothing
+head (x:_) = Just x
 
 tail :: [a] -> Maybe [a]
 tail []     = Nothing
@@ -21,13 +21,13 @@ init (x:[]) = Just []
 init (x:xs) = (x :) <$> Extra.Safe.init xs
 
 maximum :: Ord a => [a] -> Maybe a
-maximum []      = Nothing
-maximum (x:xs)  = Just $ f x xs where
-    f x (y:ys)  = case compare x y of
+maximum []     = Nothing
+maximum (x:xs) = Just $ f x xs where
+    f x []     = x
+    f x (y:ys) = case compare x y of
         LT -> f x ys
         EQ -> f x ys
         GT -> f y ys
-    f x []      = x
 
 minimum :: Ord a => [a] -> Maybe a
 minimum []      = Nothing
@@ -51,22 +51,22 @@ quot :: Integral a => a -> a -> Maybe a
 quot _ 0 = Nothing
 quot a b = Just $ Prelude.quot a b
 
-rem             :: Integral a => a -> a -> Maybe a
+rem :: Integral a => a -> a -> Maybe a
 rem _ 0 = Nothing
 rem a b = Just $ Prelude.rem a b
 
-quotRem         :: Integral a => a -> a -> Maybe (a, a)
-quotRem _ 0     = Nothing
-quotRem a b     = Just $ Prelude.quotRem a b
+quotRem :: Integral a => a -> a -> Maybe (a, a)
+quotRem _ 0 = Nothing
+quotRem a b = Just $ Prelude.quotRem a b
 
-div             :: Integral a => a -> a -> Maybe a
-div _ 0         = Nothing
-div a b         = Just $ Prelude.div a b
+div :: Integral a => a -> a -> Maybe a
+div _ 0 = Nothing
+div a b = Just $ Prelude.div a b
 
-mod             :: Integral a => a -> a -> Maybe a
-mod _ 0         = Nothing
-mod a b         = Just $ Prelude.mod a b
+mod :: Integral a => a -> a -> Maybe a
+mod _ 0 = Nothing
+mod a b = Just $ Prelude.mod a b
 
-divMod          :: Integral a => a -> a -> Maybe (a, a)
-divMod _ 0      = Nothing
-divMod a b      = Just $ Prelude.divMod a b
+divMod :: Integral a => a -> a -> Maybe (a, a)
+divMod _ 0 = Nothing
+divMod a b = Just $ Prelude.divMod a b
