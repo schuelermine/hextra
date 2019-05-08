@@ -16,8 +16,6 @@
         * Deprecated.hs
     * Nat.hs
     * Nat
-      * Internal.hs
-      * Instances.hs
       * Kind.hs
   * Extra
     * Tuple.hs
@@ -87,27 +85,17 @@ Thinking of either deleting this or moving it to its own folder, so other folder
 Doesn't export anything.
 Has a `module` header so the compiler stops complaining about the missing `main`.
 
-#### Data/Nat.hs
-
-Exports instances and definitions from modules in the `Nat` *folder*.
-Does not conflict with Prelude.
-
 #### Data/Nat/Internal.hs
 
 `Data.Nat.Internal`
 
 Defines natural numbers inductively and operations on them.
+Also defines instances of various classes for the natural number type.
 Not intended for use. Use `Data.Nat` instead.
 
 Import qualified.
 
-TODO: Write div, mod etc.
-
-#### Data/Nat/Instances.hs
-
-`Data.Nat.Instances`
-
-Defines instances for the natural numbers defined in `Data.Nat.Internal`.
+TODO: Consider splitting off a Nat module that doesn't clash with `Prelude`
 
 #### Data/Nat/Kind.hs
 
