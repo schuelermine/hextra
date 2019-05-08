@@ -1,10 +1,8 @@
-module Data.Cirq.Utils where
+module Data.Cirq.Utils (cqTotal, cqTotalM, cqProd, cqIndex, cqMean) where
 -- Exports predefined Cirqs
 
-import qualified Data.Cirq as Cq
-import Data.Cirq (Cirq(Cirq), cqAccum)
-import qualified Control.Arrow as Arr
-import 
+import Data.Cirq.Full
+import Control.Arrow
 
 cqTotal :: Num a => Cirq a a
 cqTotal = cqAccum 0 (+)

@@ -1,14 +1,16 @@
 module Data.Sqc where
 
-import Extra.Tuple (dupe) as Tup
+import Extra.Tuple
 
 data Sqc a = a :- Sqc a
 
-fromList :: [a] -> a -> Sqc a
-fromList [] a = unfoldr dupe a
-fromList (x:xs) a = x :- fromList xs a
+sqcFromList :: [a] -> a -> Sqc a
+sqcFromList [] a = unfoldSqc dupe a
+sqcFromList (x:xs) a = x :- sqcFromList xs a
 
-unfoldr :: (a -> (a, b)) -> a -> Sqc b
-unfoldr f x =
+unfoldSqc :: (a -> (a, b)) -> a -> Sqc b
+unfoldSqc f x =
     let (a, b) = f x
-    in  b :- unfoldr f a
+    in  b :- unfoldSqc f a
+
+main = return ()

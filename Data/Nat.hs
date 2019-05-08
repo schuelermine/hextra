@@ -1,12 +1,12 @@
 {-# LANGUAGE NoImplicitPrelude #-}
 
-module Data.Nat where
+module Data.Nat (N(Z, S), (+), (*), (-), toInteger, fromInteger, quotRem, quot, rem, subtract, zero, one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve) where
 -- Defines natural numbers and operations on them
 
 import qualified Prelude as P
-import Extra.Function ((.>), (<.)) as Fun
-import Extra.Tuple (map) as Tup
-import Extra.Num (toIntegral) as Num
+import Extra.Function
+import Extra.Tuple
+import Extra.Num
 
 data N = Z | S N
 -- Inductive natural number type

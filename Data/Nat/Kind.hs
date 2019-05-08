@@ -1,6 +1,6 @@
 {-# LANGUAGE DataKinds, TypeFamilies, TypeOperators, NoImplicitPrelude, UndecidableInstances #-}
 
-module Data.Nat.Kind where
+module Data.Nat.Kind (type (+), type (*), type (-)) where
 -- Defines versions of (+), (*), (-) as type families (using DataKinds)
 -- For details on definitions, see Data.Nat
 
