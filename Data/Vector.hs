@@ -1,11 +1,11 @@
 {-# LANGUAGE DataKinds, GADTs, KindSignatures, NoImplicitPrelude, TypeOperators #-}
 
-module Data.Vector (Vector(Nil, Con), N(Z, S), toList) where
+module Data.Vector where
 -- Defines Vector datatype and associated functions
 -- Useful when you want to make sure things similar to (!!) or take always work
 
-import Data.Nat
-import Data.Nat.Kind
+import Data.Nat (N(S, Z)) as N
+import Data.Nat.Kind (type (+), type (-), type (*), type max, type min) as NK
 
 data Vector :: N -> * -> * where
     Nil :: Vector 'Z a

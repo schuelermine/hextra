@@ -1,5 +1,16 @@
 ## My personal Haskell repository
 
+### **Upfront warning**
+
+**All modules here are designed to be imported as follows:**
+
+    import qualified Module as Mod
+    import Module (function)
+
+We don't avoid name clashing.
+
+#
+
 ### Content of this README
 
 * Purpose

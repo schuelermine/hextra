@@ -2,4 +2,4 @@ module Data.Cirq.Basic (Cirq, cqId, cqDot, cqArr, cqFirst, cqRun, cqAccumF, cqAc
 -- Only reexports high-level functions
 -- Useful when you want to make sure Cirqs behave
 
-import Data.Cirq.Full
+import Data.Cirq as Cq
