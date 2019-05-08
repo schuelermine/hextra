@@ -1,4 +1,4 @@
-## Anselm Schüler's personal Haskell repository
+## My personal Haskell repository
 
 ### Content of this README
 
