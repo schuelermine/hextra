@@ -4,8 +4,8 @@ module Data.Vector (Vector(Nil, Con), N(Z, S), toList) where
 -- Defines Vector datatype and associated functions
 -- Useful when you want to make sure things similar to (!!) or take always work
 
-import Data.Nat
-import Data.Nat.Kind
+import Data.Nat as Nat
+import Data.Nat.Kind as NatK
 
 data Vector :: N -> * -> * where
     Nil :: Vector 'Z a
@@ -23,3 +23,5 @@ toList (Con x xs) = x : toList xs
 append :: Vector n a -> Vector m a -> Vector (n + m) a
 append Nil ys        = a
 append (Con x xs) ys = Con x (xs ++ ys)
+-- Concatenates two Vectors
+-- The resulting Vector's length is the sum of the original Vectors' lengths

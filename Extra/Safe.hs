@@ -1,6 +1,7 @@
 module Extra.Safe (Extra.Safe.head, Extra.Safe.tail, Extra.Safe.last, Extra.Safe.init, Extra.Safe.maximum, Extra.Safe.minimum) where
 -- Implements safe versions of various functions
 -- Designed to be imported qualified, possibly with the alias Safe
+-- ? Spinoff another module for functions which, instead of returning Nothing for empty lists, use NonEmpty
 
 head :: [a] -> Maybe a
 head []    = Nothing

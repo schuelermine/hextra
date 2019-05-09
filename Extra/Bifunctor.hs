@@ -3,8 +3,8 @@
 module Extra.Bifunctor (mapAll, mapAll', mapAllC, mapAllB) where
 -- More general versions of some functions from Extra.Tuple
 
-import Data.Bifunctor (Bifunctor, bimap)
-import Data.Kind (Constraint)
+import Data.Bifunctor as Bifun
+import Data.Kind (Constraint) as Kind
 
 mapAll :: Bifunctor g => (a -> b) -> g a a -> g b b
 mapAll f x = bimap f f x

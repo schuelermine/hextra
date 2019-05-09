@@ -20,7 +20,9 @@ uncurry4 f (x, y, z, w) = f x y z w
 infixr 9 <.
 (<.) :: (b -> b -> c) -> (a -> b) -> a -> a -> c
 (<.) f g x y = f (g x) (g y)
+-- Applies a unary function on the inputs of a binary function
 
 infixr 9 .>
 (.>) :: (b -> c) -> (a -> a -> b) -> a -> a -> c
 (.>) f g x y = f (g x y)
+-- Applies a unary function on the output of a binary function

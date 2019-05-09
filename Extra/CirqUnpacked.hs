@@ -1,8 +1,8 @@
 module Extra.CirqUnpacked (total, totalM, prod, mean) where
 -- Exports Cirqs run through cqrun, runnable on lists (type approx: [a] -> [b])
+-- See Data.Cirq.Utils for implementation
 
-import Data.Cirq.Basic (cqRun)
-import Data.Cirq.Utils
+import Data.Cirq as Cq
 
 total :: Num a => [a] -> [a]
 total = cqRun cqTotal
@@ -15,3 +15,5 @@ prod = cqRun cqProd
 
 mean :: Fractional a => [a] -> [a]
 mean = cqRun cqMean
+
+-- See Data.Cirq.Utils for implementation
