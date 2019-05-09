@@ -1,0 +1,3 @@
+module Extra where
+
+(%) = mod
