@@ -13,9 +13,11 @@ import Data.Nat.Compatible
 import Data.Nat.Kind
 import Data.Sqc
 import Data.Vector
+import Extra
 import Extra.Bifunctor
 import Extra.CirqUnpacked
 import Extra.Function
+import Extra.Integral
 import Extra.Maybe
 import Extra.Nat
 import Extra.Num
