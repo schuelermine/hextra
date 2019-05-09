@@ -1,7 +1,7 @@
 module Data.Cirq.Tools (cqWhileThen, cqWhile, cqUntilThen, cqUntil) where
 -- Exports tools for modifying Cirqs after the fact
 
-import Data.Cirq.Full as Cq
+import Data.Cirq.Base as Cq
 
 cqWhileThen :: (a -> Bool) -> Cirq a b -> Cirq a b -> Cirq a b
 cqWhileThen f (Cirq q1) cq2@(Cirq q2) = Cirq $ \a ->

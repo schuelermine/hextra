@@ -1,5 +1,7 @@
-module Extra.Num (toIntegral) where
+module Extra.Num (toIntegral, (<->)) where
 -- TODO: Comment this file
+
+import Extra.Function as Fun
 
 toIntegral :: (Integral n, Integral m) => n -> m
 toIntegral = fromInteger . toInteger

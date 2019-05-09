@@ -1,6 +1,6 @@
 {-# LANGUAGE NoImplicitPrelude #-}
 
-module Data.Nat (N(Z, S), (+), (*), (-), toInteger, fromInteger, quotRem, quot, rem, subtract, zero, one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve) where
+module Data.Nat (N(Z, S), (+), (*), (-), toInteger, fromInteger, quotRem, quot, rem, difference, zero, one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve) where
 -- Defines natural numbers and operations on them
 
 import qualified Prelude as P
@@ -88,8 +88,8 @@ rem = P.snd .> quotRem
 -- Division and Modulo of natural numbers, but individually
 -- Just extracts the first and second elemts of the result of quotRem
 
-subtract :: P.Integral n => N -> N -> n
-subtract = (P.-) <. toIntegral
+difference :: P.Integral n => N -> N -> n
+difference = (P.-) <. toIntegral
 -- Subtraction of two natural numbers. The result is not necessarily a natural number
 -- For example, 7 - 21 = (-14), which isn't a natural number,
 -- hence a type including an integral
@@ -124,7 +124,7 @@ twelve = S eleven
 
 -- Instances of N:
 
-instance Num N where
+instance P.Num N where
     (+) = (+)
     (-) = (-)
     (*) = (*)
@@ -133,34 +133,34 @@ instance Num N where
     abs = P.id
     signum = P.const one
 
-instance Eq N where
+instance P.Eq N where
     Z     == Z     = P.True
     Z     == _     = P.False
     _     == Z     = P.False
     (S x) == (S y) = x P.== y
 
-instance Ord N where
+instance P.Ord N where
     compare  Z     Z    = P.EQ
     compare  Z     _    = P.LT
     compare  _     Z    = P.GT
     compare (S x) (S y) = P.compare x y
 
-instance Enum N where
+instance P.Enum N where
     succ = S
     pred Z = Z
     pred (S x) = x
     fromEnum = P.fromInteger P.. toInteger
     toEnum = P.fromIntegral
 
-instance Real N where
+instance P.Real N where
     toRational = P.toRational P.. toInteger
 
-instance Integral N where
+instance P.Integral N where
     quotRem = quotRem
     divMod = quotRem
     toInteger = toInteger
 
-instance Show N where
+instance P.Show N where
     showsPrec x = P.showsPrec x P.. toInteger
-    show = P.show . toInteger
-    showList = P.showList P.. map toInteger
+    show = P.show P.. toInteger
+    showList = P.showList P.. P.map toInteger

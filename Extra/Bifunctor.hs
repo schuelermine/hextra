@@ -4,7 +4,7 @@ module Extra.Bifunctor (mapAll, mapAll', mapAllC, mapAllB) where
 -- More general versions of some functions from Extra.Tuple
 
 import Data.Bifunctor as Bifun
-import Data.Kind (Constraint) as Kind
+import Data.Kind as Kind (Constraint)
 
 mapAll :: Bifunctor g => (a -> b) -> g a a -> g b b
 mapAll f x = bimap f f x

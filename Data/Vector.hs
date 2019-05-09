@@ -21,7 +21,7 @@ toList (Con x xs) = x : toList xs
 -- Discards information about the length on the type level
 
 append :: Vector n a -> Vector m a -> Vector (n + m) a
-append Nil ys        = a
-append (Con x xs) ys = Con x (xs ++ ys)
+append Nil ys        = ys
+append (Con x xs) ys = Con x (append xs ys)
 -- Concatenates two Vectors
 -- The resulting Vector's length is the sum of the original Vectors' lengths

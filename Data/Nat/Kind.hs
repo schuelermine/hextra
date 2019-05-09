@@ -1,6 +1,6 @@
 {-# LANGUAGE DataKinds, TypeFamilies, TypeOperators, NoImplicitPrelude, UndecidableInstances #-}
 
-module Data.Nat.Kind (type (+), type (*), type (-)) where
+module Data.Nat.Kind (type (+), type (*), type (-), type Max, type Min) where
 -- Defines versions of (+), (*), (-) as type families (using DataKinds)
 -- For details on definitions, see Data.Nat
 
@@ -19,14 +19,14 @@ type instance 'Z - b          = b
 type instance a - 'Z          = a
 type instance ('S a) - ('S b) = a - b
 
-type family min (a :: N) (b :: N) :: N
-type instance min 'Z _          = 'Z
-type instance min _ 'Z          = a
-type instance min ('S a) ('S b) = S (min a b)
+type family Min (a :: N) (b :: N):: N
+type instance Min 'Z _          = 'Z
+type instance Min _ 'Z          = 'Z
+type instance Min ('S a) ('S b) = S (Min a b)
 
-type family max (a :: N) (b :: N) :: N
-type instance max 'Z b          = b
-type instance max a 'Z          = a
-type instance max ('S a) ('S b) = S (max a b)
+type family Max (a :: N) (b :: N) :: N
+type instance Max 'Z b          = b
+type instance Max a 'Z          = a
+type instance Max ('S a) ('S b) = S (Max a b)
 
 -- See Data.Nat

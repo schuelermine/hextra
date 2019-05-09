@@ -1,7 +1,7 @@
 module Data.Cirq.Utils (cqTotal, cqTotalM, cqProd, cqIndex, cqMean) where
 -- Exports predefined Cirqs
 
-import Data.Cirq.Full as Cq
+import Data.Cirq.Base as Cq
 import Control.Arrow as Arr
 
 cqTotal :: Num a => Cirq a a
