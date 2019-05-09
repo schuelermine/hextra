@@ -1,9 +1,10 @@
 ## My personal Haskell repository
 
-### Content of this README
+### Contents of this README
 
+* Contents
 * Purpose
-* Explaining files
+* File info
   * notesonhaskell.txt
   * Numberguessing.hs
   * Data

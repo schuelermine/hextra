@@ -11,12 +11,14 @@ tSort (x, y) = case compare x y of
     LT -> (x, y)
     EQ -> (x, y)
     GT -> (y, x)
+-- Sorts a tuple
 
 tSort' :: Ord a => (a, a) -> (a, a)
 tSort' (x, y) = case compare x y of
     LT -> (y, x)
     EQ -> (x, y)
     GT -> (x, y)
+-- Sorts a tuple, reversed
 
 tReverse :: (a, b) -> (b, a)
 tReverse (x, y) = (y, x)
