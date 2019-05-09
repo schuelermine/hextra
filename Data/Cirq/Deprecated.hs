@@ -2,7 +2,7 @@ module Data.Cirq.Deprecated() where
 -- Archive for old functions, prototypes and other stuff
 -- Functionality of these functions is usually still available
 
-import Data.Cirq.Full
+import Data.Cirq.Full as Cq
 
 cquntilIncB :: (b -> Bool) -> Cirq a b -> Cirq a b -> Cirq a b
 cquntilIncB c cq (Cirq q) = Cirq $ \a ->

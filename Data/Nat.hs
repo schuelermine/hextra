@@ -4,9 +4,9 @@ module Data.Nat (N(Z, S), (+), (*), (-), toInteger, fromInteger, quotRem, quot, 
 -- Defines natural numbers and operations on them
 
 import qualified Prelude as P
-import Extra.Function
-import Extra.Tuple
-import Extra.Num
+import Extra.Function as Fun
+import Extra.Tuple as Tup
+import Extra.Num as Num
 
 data N = Z | S N
 -- Inductive natural number type

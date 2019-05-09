@@ -3,6 +3,6 @@ module Data.Nat.Compatible (subtract) where
 -- Only exports functions that don't clash,
 -- does not export non-clashing aliases
 
-import qualified Data.Nat
+import qualified Data.Nat as Nat
 
-subtract = Data.Nat.subtract
+subtract = Nat.subtract

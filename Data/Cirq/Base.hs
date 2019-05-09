@@ -4,7 +4,7 @@ module Data.Cirq.Base (Cirq(Cirq), unCirq, cqId, cqDot, cqArr, cqFirst, cqRun, c
 -- Defines Cirq, an Arrow that always produces a replacement for itself.
 -- Useful for iterating through lists, easily combinable thanks to Arrow
 
-import Control.Arrow
+import Control.Arrow as Arr
 import qualified Control.Category as Cat
 
 import Extra.Tuple (dupe)

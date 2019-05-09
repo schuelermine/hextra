@@ -1,6 +1,6 @@
 module Extra.Nat (replaceTail) where
 
-import qualified Data.Nat as N.S N
+import qualified Data.Nat as N
 
 replaceTail :: N.N -> N.N -> N.N
 replaceTail N.Z _     = N.Z

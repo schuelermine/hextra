@@ -4,7 +4,7 @@ module Extra.Tuple (dupe, dupe', dupeC, mapAll, mapAll', mapAllC, mapAllB, tSort
 -- For mapAll and its cousins, consider importing Extra.Bifunctor instead
 -- To solely import dupe, write import Extra.Tuple (dupe)
 
-import Data.Kind (Constraint)
+import Data.Kind as Kind
 
 tSort :: Ord a => (a, a) -> (a, a)
 tSort (x, y) = case compare x y of

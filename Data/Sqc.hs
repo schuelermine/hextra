@@ -1,6 +1,6 @@
 module Data.Sqc where
 
-import Extra.Tuple
+import Extra.Tuple as Tup
 
 data Sqc a = a :- Sqc a
 
@@ -12,5 +12,3 @@ unfoldSqc :: (a -> (a, b)) -> a -> Sqc b
 unfoldSqc f x =
     let (a, b) = f x
     in  b :- unfoldSqc f a
-
-main = return ()

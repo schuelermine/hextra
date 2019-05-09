@@ -4,8 +4,8 @@ module Data.Vector (Vector(Nil, Con), N(Z, S), toList) where
 -- Defines Vector datatype and associated functions
 -- Useful when you want to make sure things similar to (!!) or take always work
 
-import Data.Nat
-import Data.Nat.Kind
+import Data.Nat as Nat
+import Data.Nat.Kind as NatK
 
 data Vector :: N -> * -> * where
     Nil :: Vector 'Z a
