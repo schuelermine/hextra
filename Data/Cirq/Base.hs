@@ -1,6 +1,6 @@
 {-# LANGUAGE Arrows #-}
 
-module Data.Cirq.Base (Cirq(Cirq), unCirq, cqId, cqDot, cqArr, cqFirst, cqRun, cqAccumF, cqAccum) where
+module Data.Cirq.Base where
 -- Defines Cirq, an Arrow that always produces a replacement for itself.
 -- Useful for iterating through lists, easily combinable thanks to Arrow
 

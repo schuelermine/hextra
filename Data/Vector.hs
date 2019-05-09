@@ -1,6 +1,6 @@
 {-# LANGUAGE DataKinds, GADTs, KindSignatures, NoImplicitPrelude, TypeOperators #-}
 
-module Data.Vector (Vector(Nil, Con), N(Z, S), toList) where
+module Data.Vector where
 -- Defines Vector datatype and associated functions
 -- Useful when you want to make sure things similar to (!!) or take always work
 

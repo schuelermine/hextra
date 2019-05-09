@@ -1,4 +1,4 @@
-module Extra.CirqUnpacked (total, totalM, prod, mean) where
+module Extra.CirqUnpacked where
 -- Exports Cirqs run through cqrun, runnable on lists (type approx: [a] -> [b])
 -- See Data.Cirq.Utils for implementation
 

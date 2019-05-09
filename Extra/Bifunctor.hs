@@ -1,6 +1,6 @@
 {-# LANGUAGE RankNTypes, ConstraintKinds, MultiParamTypeClasses, KindSignatures, AllowAmbiguousTypes #-}
 
-module Extra.Bifunctor (mapAll, mapAll', mapAllC, mapAllB) where
+module Extra.Bifunctor where
 -- More general versions of some functions from Extra.Tuple
 
 import Data.Bifunctor as Bifun

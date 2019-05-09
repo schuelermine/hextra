@@ -1,6 +1,6 @@
 {-# LANGUAGE RankNTypes, ConstraintKinds, KindSignatures, AllowAmbiguousTypes #-}
 
-module Extra.Tuple (dupe, dupe', dupeC, mapAll, mapAll', mapAllC, mapAllB, tSort, tSort', tReverse) where
+module Extra.Tuple where
 -- For mapAll and its cousins, consider importing Extra.Bifunctor instead
 -- To solely import dupe, write import Extra.Tuple (dupe)
 

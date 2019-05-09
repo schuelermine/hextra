@@ -1,4 +1,4 @@
-module Data.Cirq.Utils (cqTotal, cqTotalM, cqProd, cqIndex, cqMean) where
+module Data.Cirq.Utils where
 -- Exports predefined Cirqs
 
 import Data.Cirq.Base as Cq

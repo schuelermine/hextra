@@ -1,4 +1,4 @@
-module Data.Cirq.Tools (cqWhileThen, cqWhile, cqUntilThen, cqUntil) where
+module Data.Cirq.Tools where
 -- Exports tools for modifying Cirqs after the fact
 
 import Data.Cirq.Base as Cq

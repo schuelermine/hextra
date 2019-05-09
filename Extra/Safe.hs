@@ -1,4 +1,4 @@
-module Extra.Safe (Extra.Safe.head, Extra.Safe.tail, Extra.Safe.last, Extra.Safe.init, Extra.Safe.maximum, Extra.Safe.minimum) where
+module Extra.Safe where
 -- Implements safe versions of various functions
 -- Designed to be imported qualified, possibly with the alias Safe
 -- ? Spinoff another module for functions which, instead of returning Nothing for empty lists, use NonEmpty
@@ -18,12 +18,12 @@ last (_:xs) = Extra.Safe.last xs
 
 init :: [a] -> Maybe [a]
 init []     = Nothing
-init (x:[]) = Just []
+init (_:[]) = Just []
 init (x:xs) = (x :) <$> Extra.Safe.init xs
 
 maximum :: Ord a => [a] -> Maybe a
 maximum []     = Nothing
-maximum (x:xs) = Just $ f x xs where
+maximum (z:zs) = Just $ f z zs where
     f x []     = x
     f x (y:ys) = case compare x y of
         LT -> f x ys
@@ -32,7 +32,7 @@ maximum (x:xs) = Just $ f x xs where
 
 minimum :: Ord a => [a] -> Maybe a
 minimum []      = Nothing
-minimum (x:xs)  = Just $ f x xs where
+minimum (z:zs)  = Just $ f z zs where
     f x (y:ys)  = case compare x y of
         LT -> f y ys
         EQ -> f x ys
@@ -42,7 +42,7 @@ minimum (x:xs)  = Just $ f x xs where
 (!!) :: Integral i => [a] -> i -> Maybe a
 [] !! _     = Nothing
 (x:_) !! 0  = Just x
-(x:xs) !! n = xs Extra.Safe.!! (n - 1)
+(_:xs) !! n = xs Extra.Safe.!! (n - 1)
 
 cycle :: a -> [a] -> [a]
 cycle a [] = repeat a

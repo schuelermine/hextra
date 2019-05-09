@@ -1,6 +1,6 @@
 {-# LANGUAGE NoImplicitPrelude #-}
 
-module Data.Nat (N(Z, S), (+), (*), (-), toInteger, fromInteger, quotRem, quot, rem, difference, zero, one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve) where
+module Data.Nat where
 -- Defines natural numbers and operations on them
 
 import qualified Prelude as P

@@ -1,4 +1,4 @@
-module Data.Nat.Compatible (difference) where
+module Data.Nat.Compatible where
 -- Nat module that doesn't clash with Prelude
 -- Only reexports functions that don't clash,
 -- does not export non-clashing aliases

@@ -1,5 +1,4 @@
-module Extra.Num (toIntegral, (<->)) where
--- TODO: Comment this file
+module Extra.Num where
 
 import Extra.Function as Fun
 

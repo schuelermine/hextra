@@ -2,7 +2,6 @@ module Data.Sqc where
 -- Defines the Sqc (pronounce: Sequence) type and related functions
 
 import Extra.Tuple as Tup
-import Data.List as List
 
 data Sqc a = a :- Sqc a
 -- Type for infinite lists

@@ -1,4 +1,4 @@
-module Extra.Function (curry3, uncurry3, curry4, uncurry4, (<.), (.>)) where
+module Extra.Function where
 -- Extra functions relating to functions (higher-order functions)
 
 curry3 :: ((a, b, c) -> d) -> a -> b -> c -> d

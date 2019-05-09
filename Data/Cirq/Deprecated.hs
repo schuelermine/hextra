@@ -1,4 +1,4 @@
-module Data.Cirq.Deprecated() where
+module Data.Cirq.Deprecated () where
 -- Archive for old functions, prototypes and other stuff
 -- Functionality of these functions is usually still available
 

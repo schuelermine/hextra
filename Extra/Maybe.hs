@@ -1,4 +1,4 @@
-module Extra.Maybe (catchNothing, fromNothing) where
+module Extra.Maybe where
 -- Helpful extra functions concerning Maybe
 
 fromNothing :: a -> Maybe a -> a
