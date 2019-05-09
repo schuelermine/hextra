@@ -6,7 +6,7 @@ module Data.Nat where
 import qualified Prelude as P
 import Extra.Function as Fun
 import Extra.Tuple as Tup
-import Extra.Num as Num
+import Extra.Integral as Int
 
 data N = Z | S N
 -- Inductive natural number type
