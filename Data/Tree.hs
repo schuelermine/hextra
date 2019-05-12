@@ -9,7 +9,13 @@ data NonEmptyTree f a = Node a (f (NonEmptyTree f a)) | Leaf a
 data Flower f a = Stems (f (Flower f a)) | Blossom a
 data Reed f = Fork (f (Reed f))
 data Bush f a = Split a (f (Bush f a))
+
 data XTree f a = XNode (f a (Tree f a))
+-- Extremely general tree type. Generalizes all previously listed examples. Cumbersome to use, though.
+-- For example, type Bush [] = XTree G where data G x y = G x [y]
+-- Split 1 [] = XNode (G 1 [])
+-- Split 1 [Split 2 [], Split 2 [], Split 2 []] =
+-- XNode (G 1 [XNode (G 2 []), XNode (G 2 []), XNode (G 2 [])])
 
 data Tree2 a = Knot2 a (Tree2 a) (Tree2 a) | End2
 data Skeleton2 = Joint2 Skeleton2 Skeleton2 | Condyle2
