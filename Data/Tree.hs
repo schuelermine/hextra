@@ -9,6 +9,7 @@ data NonEmptyTree f a = Node a (f (NonEmptyTree f a)) | Leaf a
 data Flower f a = Stems (f (Flower f a)) | Blossom a
 data Reed f = Fork (f (Reed f))
 data Bush f a = Split a (f (Bush f a))
+data XTree f a = XNode (f a (Tree f a))
 
 data Tree2 a = Knot2 a (Tree2 a) (Tree2 a) | End2
 data Skeleton2 = Joint2 Skeleton2 Skeleton2 | Condyle2
