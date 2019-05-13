@@ -23,5 +23,5 @@ instance (Bifunctor f, Functor g) => Functor (YTree f g) where
 deriving instance (Show a, forall x y. (Show x, Show y) => Show (f x y), forall z. Show z => Show (g z)) => Show (YTree f g a)
 deriving instance (Read a, forall x y. (Read x, Read y) => Read (f x y), forall z. Read z => Read (g z)) => Read (YTree f g a)
 deriving instance (Eq a, forall x y. (Eq x, Eq y) => Eq (f x y), forall z. Eq z => Eq (g z)) => Eq (YTree f g a)
--- deriving instance (Ord a, forall x y. (Ord x, Ord y) => Ord (f x y), forall z. Ord z => Ord (g z)) => Ord (YTree f g a)
+{- deriving instance (Ord a, forall x y. (Ord x, Ord y) => Ord (f x y), forall z. Ord z => Ord (g z)) => Ord (YTree f g a) -}
 -- TODO Implement Ord, or, alternatively, figure out why it's impossible
