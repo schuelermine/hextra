@@ -1,6 +1,10 @@
-module Data.Tree.Generalized where
+{-# LANGUAGE QuantifiedConstraints, StandaloneDeriving, ExistentialQuantification, RankNTypes, UndecidableInstances, FlexibleInstances #-}
 
-data XTree f a = XNode (f a (Tree f a))
+module Data.Tree.Generalized where
+    
+import Data.Bifunctor
+
+data XTree f a = XNode (f a (XTree f a))
 -- Extremely general tree type
 -- Generalizes all previously listed examples,
 -- though cumbersome to use
@@ -9,14 +13,15 @@ data XTree f a = XNode (f a (Tree f a))
 -- Split 1 [Split 2 [], Split 2 [], Split 2 []] =
 -- XNode (G 1 [XNode (G 2 []), XNode (G 2 []), XNode (G 2 [])])
 
-data YTree f g a = YNode (f a (g (Tree f a)))
+data YTree f g a = YNode (f a (g (YTree f g a)))
 -- Slightly less general tree type
 -- Much more useful in general, though
 
 instance (Bifunctor f, Functor g) => Functor (YTree f g) where
-    fmap f (XTree m) = XTree $ bimap f (fmap f) m
+    fmap f (YNode m) = YNode $ bimap f (fmap (fmap f)) m
 
-deriving instance (Show a, forall x y. (Show x, Show y) => Show f x y, forall z. Show z => Show (g z)) => Show (YTree f g a)
-deriving instance (Read a, forall x y. (Read x, Read y) => Read f x y, forall z. Read z => Read (g z)) => Read (YTree f g a)
-deriving instance (Eq a, forall x y. (Eq x, Eq y) => Eq f x y, forall z. Eq z => Eq (g z)) => Eq (YTree f g a)
-deriving instance (Ord a, forall x y. (Ord x, Ord y) => Ord f x y, forall z. Ord z => Ord (g z)) => Ord (YTree f g a)
+deriving instance (Show a, forall x y. (Show x, Show y) => Show (f x y), forall z. Show z => Show (g z)) => Show (YTree f g a)
+deriving instance (Read a, forall x y. (Read x, Read y) => Read (f x y), forall z. Read z => Read (g z)) => Read (YTree f g a)
+deriving instance (Eq a, forall x y. (Eq x, Eq y) => Eq (f x y), forall z. Eq z => Eq (g z)) => Eq (YTree f g a)
+-- deriving instance (Ord a, forall x y. (Ord x, Ord y) => Ord (f x y), forall z. Ord z => Ord (g z)) => Ord (YTree f g a)
+-- TODO Implement Ord, or, alternatively, figure out why it's impossible
