@@ -1,7 +1,7 @@
 {-# LANGUAGE ExistentialQuantification, RankNTypes #-}
 
 module Extra.Applicative where
--- Defines usefule and alternative applicative functions and constructs
+-- Defines useful and alternative applicative functions and constructs
 
 (<:>) :: Applicative f => f a -> f b -> f (a, b)
 (<:>) a b = (,) <$> a <*> b
