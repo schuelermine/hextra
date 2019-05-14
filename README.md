@@ -37,11 +37,6 @@ Most projects, actually, are stored inside this folder, since it helps me to avo
 
 *Inconsequential* ramblings, notes, and other stuff.
 
-#### Numberguessing.hs
-
-Generic number guessing game. In progress, I want to make some modules to allow me to get an arbitrary number of command-line arguments.
-Will be invoked with two arguments denoting the lower and upper bounds of the number to be guessed.
-
 #### Data/Cirq.hs
 
 `Data.Cirq`
