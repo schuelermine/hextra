@@ -5,8 +5,6 @@
 * Contents
 * Purpose
 * File info
-  * notesonhaskell.txt
-  * Numberguessing.hs
   * Data
     * Cirq.hs
     * Cirq
@@ -32,15 +30,6 @@ I use this to write any code that's not for a project that already has a folder.
 Most projects, actually, are stored inside this folder, since it helps me to avoid duplicate module names.
 
 ### Explaining files
-
-#### notesonhaskell.txt
-
-*Inconsequential* ramblings, notes, and other stuff.
-
-#### Numberguessing.hs
-
-Generic number guessing game. In progress, I want to make some modules to allow me to get an arbitrary number of command-line arguments.
-Will be invoked with two arguments denoting the lower and upper bounds of the number to be guessed.
 
 #### Data/Cirq.hs
 
