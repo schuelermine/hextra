@@ -3,10 +3,19 @@
 module Extra.Applicative where
 -- Defines useful and alternative applicative functions and constructs
 
+infixl 5 <:>
 (<:>) :: Applicative f => f a -> f b -> f (a, b)
 (<:>) a b = (,) <$> a <*> b
 -- Pairs up all elements in two applicative functors
 -- One of the operations/values of the monoidal presentation of functors
+
+infixl 6 <<>>
+(<<>>) :: (Applicative f, Monoid a) => f a -> f a -> f a
+a <<>> b = mappend <$> a <*> b
+
+infixl 4 <::>
+(<::>) :: Applicative f => f a -> f b -> f (a, b)
+(<::>) = (<:>)
 
 unit :: Applicative f => f ()
 unit = pure ()
@@ -35,4 +44,4 @@ mkNilA :: Functor f => (forall x. x -> f x) -> f ()
 mkNilA p = p ()
 
 mkZipA :: Functor f => (forall x y. f (x -> y) -> f x -> f y) -> f a -> f b -> f (a, b)
-mkZipA (?) x y = (,) <$> x ? y
+mkZipA (?) x y = ((,) <$> x) ? y

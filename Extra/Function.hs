@@ -1,6 +1,7 @@
 module Extra.Function where
 -- Extra functions relating to functions (higher-order functions)
 
+
 curry3 :: ((a, b, c) -> d) -> a -> b -> c -> d
 curry3 f x y z = f (x, y, z)
 -- Like curry, but for functions with three arguments
@@ -8,6 +9,9 @@ curry3 f x y z = f (x, y, z)
 uncurry3 :: (a -> b -> c -> d) -> (a, b, c) -> d
 uncurry3 f (x, y, z) = f x y z
 -- Like uncurry, but for functions with three arguments
+
+uncurry3' :: (a -> b -> c -> d) -> a -> (b, c) -> d
+uncurry3' f a (b, c) = f a b c
 
 curry4 :: ((a, b, c, d) -> e) -> a -> b -> c -> d -> e
 curry4 f x y z w = f (x, y, z, w)
