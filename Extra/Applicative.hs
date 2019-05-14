@@ -31,8 +31,8 @@ class Monoidal f where
     nilA :: f ()
     zipA :: f a -> f b -> f (a, b)
 
-mkZipA :: Functor f => (forall x y. f (x -> y) -> f x -> f y) -> f a -> f b -> f (a, b)
-mkZipA (?) x y = (,) <$> x ? y
-
 mkNilA :: Functor f => (forall x. x -> f x) -> f ()
 mkNilA p = p ()
+
+mkZipA :: Functor f => (forall x y. f (x -> y) -> f x -> f y) -> f a -> f b -> f (a, b)
+mkZipA (?) x y = (,) <$> x ? y
