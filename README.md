@@ -31,6 +31,10 @@ Most projects, actually, are stored inside this folder, since it helps me to avo
 
 ### Explaining files
 
+#### notesonhaskell.txt
+
+*Inconsequential* ramblings, notes, and other stuff.
+
 #### Data/Cirq.hs
 
 `Data.Cirq`
