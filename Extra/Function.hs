@@ -30,3 +30,12 @@ infixr 9 .>
 (.>) :: (b -> c) -> (a -> a -> b) -> a -> a -> c
 (.>) f g x y = f (g x y)
 -- Applies a unary function on the output of a binary function
+
+(.<) :: (a -> a -> b) -> (b -> c) -> a -> a -> c
+(.<) = flip (.>)
+
+(>.) :: (a -> b) -> (b -> b -> c) -> a -> a -> c
+(>.) = flip (<.)
+
+(>>>) :: (a -> b) -> (b -> c) -> a -> c
+(>>>) = flip (.)
