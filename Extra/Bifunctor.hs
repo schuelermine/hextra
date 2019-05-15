@@ -1,4 +1,4 @@
-{-# LANGUAGE RankNTypes, ConstraintKinds, MultiParamTypeClasses, KindSignatures, AllowAmbiguousTypes #-}
+{-# LANGUAGE RankNTypes, ConstraintKinds, MultiParamTypeClasses, KindSignatures, AllowAmbiguousTypes, ExplicitForall #-}
 
 module Extra.Bifunctor where
 -- More general versions of some functions from Extra.Tuple
@@ -6,12 +6,12 @@ module Extra.Bifunctor where
 import Data.Bifunctor as Bifun
 import Data.Kind as Kind (Constraint)
 
-mapAll :: Bifunctor g => (a -> b) -> g a a -> g b b
+mapAll :: forall g a b. Bifunctor g => (a -> b) -> g a a -> g b b
 mapAll f x = bimap f f x
 -- Maps a function onto a homogenous bifunctor (like tuples)
 -- homogenous = same type in both slots
 
-mapAll' :: Bifunctor g => (forall a. a -> b) -> g x y -> g b b
+mapAll' :: forall g b x y. Bifunctor g => (forall a. a -> b) -> g x y -> g b b
 mapAll' f x = bimap f f x
 -- Maps a universally polymorphic over any (even heterogenous) bifunctor
 -- universally polymorphic = works for any type

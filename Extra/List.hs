@@ -1,6 +1,8 @@
+{-# LANUAGE ExplicitForall #-}
+
 module Extra.List where
 
-replaceTail :: [a] -> [a] -> [a]
+replaceTail :: forall a. [a] -> [a] -> [a]
 replaceTail [] _ = []
 replaceTail (x:_) xs = x:xs
 -- Fuction with as of now unknown use cases

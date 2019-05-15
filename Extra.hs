@@ -1,10 +1,10 @@
-{-# LANGUAGE NoMonomorphismRestriction #-}
+{-# LANGUAGE NoMonomorphismRestriction, ExplicitForall #-}
 
 module Extra where
 
 import Extra.Function
 
-(%) :: Integral i => i -> i -> i
+(%) :: forall i. Integral i => i -> i -> i
 (%) = mod
 
 iff a b c = if a then b else c

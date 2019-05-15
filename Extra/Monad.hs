@@ -1,7 +1,9 @@
+{-# LANUAGE ExplicitForall #-}
+
 module Extra.Monad where
 
-none :: m () -> m ()
+none :: forall m. m () -> m ()
 none = id
 
-forever :: Monad m => m a -> m a
+forever :: forall m a. Monad m => m a -> m a
 forever m = m >> forever m

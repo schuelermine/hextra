@@ -1,4 +1,4 @@
-{-# LANGUAGE NoImplicitPrelude #-}
+{-# LANGUAGE NoImplicitPrelude, ExplicitForall #-}
 
 module Data.Nat where
 -- Defines natural numbers and operations on them
@@ -88,7 +88,7 @@ rem = P.snd .> quotRem
 -- Division and Modulo of natural numbers, but individually
 -- Just extracts the first and second elemts of the result of quotRem
 
-difference :: P.Integral n => N -> N -> n
+difference :: forall n. P.Integral n => N -> N -> n
 difference = (P.-) <. toIntegral
 -- Subtraction of two natural numbers. The result is not necessarily a natural number
 -- For example, 7 - 21 = (-14), which isn't a natural number,
