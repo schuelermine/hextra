@@ -9,13 +9,15 @@ infixl 5 <:>
 -- Pairs up all elements in two applicative functors
 -- One of the operations/values of the monoidal presentation of functors
 
-infixl 6 <<>>
-(<<>>) :: (Applicative f, Monoid a) => f a -> f a -> f a
-a <<>> b = mappend <$> a <*> b
-
 infixl 4 <::>
 (<::>) :: Applicative f => f a -> f b -> f (a, b)
 (<::>) = (<:>)
+-- Just (<:>), but with lower precedence
+
+infixl 6 <<>>
+(<<>>) :: (Applicative f, Monoid a) => f a -> f a -> f a
+a <<>> b = mappend <$> a <*> b
+-- Adds up values in two applicative functors
 
 unit :: Applicative f => f ()
 unit = pure ()
