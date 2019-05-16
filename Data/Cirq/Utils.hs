@@ -1,10 +1,10 @@
-{-# LANUAGE ExplicitForAll #-}
+{-# LANGUAGE ExplicitForAll #-}
 
 module Data.Cirq.Utils where
 -- Exports predefined Cirqs
 
 import Data.Cirq.Base as Cq
-{-# LANUAGE ExplicitForAll #-}
+{-# LANGUAGE ExplicitForAll #-}
 
 import Control.Arrow as Arr
 

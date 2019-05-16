@@ -20,7 +20,7 @@ data YTree f g a = YNode (f a (g (YTree f g a)))
 -- Slightly less general tree type
 -- Much more useful in general, though
 
-unYNode :: forall f g a. YTree f g a -> f a (g (YTree f a))
+unYNode :: forall f g a. YTree f g a -> f a (g (YTree f g a))
 unYNode (YNode f) = f
 
 instance (Bifunctor f, Functor g) => Functor (YTree f g) where

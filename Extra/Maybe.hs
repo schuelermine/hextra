@@ -1,4 +1,4 @@
-{-# LANUAGE ExplicitForAll #-}
+{-# LANGUAGE ExplicitForAll #-}
 
 module Extra.Maybe where
 -- Helpful extra functions concerning Maybe

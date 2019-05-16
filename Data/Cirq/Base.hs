@@ -13,8 +13,8 @@ import Extra.Tuple (dupe)
 newtype Cirq a b = Cirq (a -> (Cirq a b, b))
 -- A function that returns a replacement for itself alongside the result
 
-uncirq :: forall a b. Cirq a b -> (a -> (Cirq a b, b))
-uncirq (Cirq f) = f
+unCirq :: forall a b. Cirq a b -> (a -> (Cirq a b, b))
+unCirq (Cirq f) = f
 
 instance Cat.Category Cirq where
     id = Cirq $ \a -> (Cat.id, a)

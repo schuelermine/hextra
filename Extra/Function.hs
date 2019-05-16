@@ -1,4 +1,4 @@
-{-# LANUAGE ExplicitForAll #-}
+{-# LANGUAGE ExplicitForAll #-}
 
 module Extra.Function where
 -- Extra functions relating to functions (higher-order functions)

@@ -1,4 +1,4 @@
-{-# LANUAGE ExplicitForAll #-}
+{-# LANGUAGE ExplicitForAll #-}
 
 module Extra.Safe where
 -- Implements safe versions of various functions
