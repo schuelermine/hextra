@@ -1,4 +1,4 @@
-{-# LANGUAGE NoImplicitPrelude, ExplicitForall #-}
+{-# LANGUAGE NoImplicitPrelude, ExplicitForAll #-}
 
 module Data.Nat where
 -- Defines natural numbers and operations on them

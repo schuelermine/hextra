@@ -1,4 +1,4 @@
-{-# LANUAGE ExplicitForall #-}
+{-# LANUAGE ExplicitForAll #-}
 
 module Data.Cirq.Tools where
 -- Exports tools for modifying Cirqs after the fact

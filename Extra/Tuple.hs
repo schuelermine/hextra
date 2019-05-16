@@ -1,4 +1,4 @@
-{-# LANGUAGE RankNTypes, ConstraintKinds, KindSignatures, AllowAmbiguousTypes, ExplicitForall #-}
+{-# LANGUAGE RankNTypes, ConstraintKinds, KindSignatures, AllowAmbiguousTypes, ExplicitForAll #-}
 
 module Extra.Tuple where
 -- For mapAll and its cousins, consider importing Extra.Bifunctor instead

@@ -1,4 +1,4 @@
-{-# LANUAGE ExplicitForall #-}
+{-# LANUAGE ExplicitForAll #-}
 
 module Extra.CirqUnpacked where
 -- Exports Cirqs run through cqrun, runnable on lists (type approx: [a] -> [b])

@@ -1,4 +1,4 @@
-{-# LANGUAGE NoMonomorphismRestriction, ExplicitForall #-}
+{-# LANGUAGE NoMonomorphismRestriction, ExplicitForAll #-}
 
 module Extra where
 

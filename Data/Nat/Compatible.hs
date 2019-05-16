@@ -1,4 +1,4 @@
-{-# LANUAGE ExplicitForall #-}
+{-# LANUAGE ExplicitForAll #-}
 
 module Data.Nat.Compatible where
 -- Nat module that doesn't clash with Prelude

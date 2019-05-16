@@ -1,4 +1,4 @@
-{-# LANUAGE ExplicitForall #-}
+{-# LANUAGE ExplicitForAll #-}
 
 module Extra.List where
 

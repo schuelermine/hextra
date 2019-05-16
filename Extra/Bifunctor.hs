@@ -1,4 +1,4 @@
-{-# LANGUAGE RankNTypes, ConstraintKinds, MultiParamTypeClasses, KindSignatures, AllowAmbiguousTypes, ExplicitForall #-}
+{-# LANGUAGE RankNTypes, ConstraintKinds, MultiParamTypeClasses, KindSignatures, AllowAmbiguousTypes, ExplicitForAll #-}
 
 module Extra.Bifunctor where
 -- More general versions of some functions from Extra.Tuple

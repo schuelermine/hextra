@@ -1,4 +1,4 @@
-{-# LANGUAGE Arrows, ExplicitForall #-}
+{-# LANGUAGE Arrows, ExplicitForAll #-}
 
 module Data.Cirq.Base where
 -- Defines Cirq, an Arrow that always produces a replacement for itself.

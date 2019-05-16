@@ -1,4 +1,4 @@
-{-# LANUAGE ExplicitForall #-}
+{-# LANUAGE ExplicitForAll #-}
 
 module Data.Sqc where
 -- Defines the Sqc (pronounce: Sequence) type and related functions

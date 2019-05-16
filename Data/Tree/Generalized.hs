@@ -1,4 +1,4 @@
-{-# LANGUAGE QuantifiedConstraints, StandaloneDeriving, ExistentialQuantification, RankNTypes, UndecidableInstances, FlexibleInstances, ExplicitForall #-}
+{-# LANGUAGE QuantifiedConstraints, StandaloneDeriving, ExistentialQuantification, RankNTypes, UndecidableInstances, FlexibleInstances, ExplicitForAll #-}
 
 module Data.Tree.Generalized where
     
