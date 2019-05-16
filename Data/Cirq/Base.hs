@@ -1,4 +1,4 @@
-{-# LANGUAGE Arrows #-}
+{-# LANGUAGE Arrows, ExplicitForAll #-}
 
 module Data.Cirq.Base where
 -- Defines Cirq, an Arrow that always produces a replacement for itself.
@@ -10,8 +10,11 @@ import qualified Control.Category as Cat
 import Extra.Tuple (dupe)
 -- Helper function. dupe :: a -> (a, a)
 
-newtype Cirq a b = Cirq { unCirq :: a -> (Cirq a b, b) }
+newtype Cirq a b = Cirq (a -> (Cirq a b, b))
 -- A function that returns a replacement for itself alongside the result
+
+unCirq :: forall a b. Cirq a b -> (a -> (Cirq a b, b))
+unCirq (Cirq f) = f
 
 instance Cat.Category Cirq where
     id = Cirq $ \a -> (Cat.id, a)
@@ -24,9 +27,9 @@ instance Cat.Category Cirq where
     -- run Cirq 2 on that, gives back new Cirq 2 and value,
     -- return value and, as replacement, return composition of new Cirq 1 and new Cirq 2
 
-cqId :: Cirq a a
+cqId :: forall a. Cirq a a
 cqId = Cat.id
-cqDot :: Cirq b c -> Cirq a b -> Cirq a c
+cqDot :: forall b c a. Cirq b c -> Cirq a b -> Cirq a c
 cqDot = (Cat..)
 -- Specialized versions of Cat.Category functions for exporting,
 -- if the main program doesn't want to or can't import Control.Category
@@ -39,14 +42,14 @@ instance Arrow Cirq where
         in  (first q', (c, b))
     -- Makes a new Cirq that applies the original cirq only to the first value of a pair
 
-cqArr :: (a -> b) -> Cirq a b
+cqArr :: forall a b. (a -> b) -> Cirq a b
 cqArr = arr
-cqFirst :: Cirq a b -> Cirq (a, c) (b, c)
+cqFirst :: forall a b c. Cirq a b -> Cirq (a, c) (b, c)
 cqFirst = first
 -- Specialized versions of Arrow functions for exporting,
 -- if the main program doesn't want to or can't import Control.Arrow
 
-cqRun :: Cirq a b -> [a] -> [b]
+cqRun :: forall a b. Cirq a b -> [a] -> [b]
 cqRun _ []      = []
 cqRun cq (x:xs) =
     let (cq', y) = unCirq cq x
@@ -55,13 +58,13 @@ cqRun cq (x:xs) =
 -- Every step, the item is replaced by the result of the current Cirq,
 -- then, the next item is processed using the new Cirq
 
-cqAccumF :: k -> (a -> k -> (b, k)) -> Cirq a b
+cqAccumF :: forall k a b. k -> (a -> k -> (b, k)) -> Cirq a b
 cqAccumF k f = Cirq $ \a ->
     let (b, k') = f a k
     in  (cqAccumF k' f, b)
 -- Turns a function that can keep an accumulator value alongside the result into a Cirq
 -- Doesn't ouput the accumulator, it is only used as info for the next function application
 
-cqAccum :: k -> (a -> k -> k) -> Cirq a k
+cqAccum :: forall k a. k -> (a -> k -> k) -> Cirq a k
 cqAccum k f = cqAccumF k (\a b -> dupe (f a b))
 -- Like cqAccumF, but the output value is the accumulator

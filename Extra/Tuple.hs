@@ -1,4 +1,4 @@
-{-# LANGUAGE RankNTypes, ConstraintKinds, KindSignatures, AllowAmbiguousTypes #-}
+{-# LANGUAGE RankNTypes, ConstraintKinds, KindSignatures, AllowAmbiguousTypes, ExplicitForAll #-}
 
 module Extra.Tuple where
 -- For mapAll and its cousins, consider importing Extra.Bifunctor instead
@@ -6,24 +6,24 @@ module Extra.Tuple where
 
 import Data.Kind as Kind
 
-tSort :: Ord a => (a, a) -> (a, a)
+tSort :: forall a. Ord a => (a, a) -> (a, a)
 tSort (x, y) = case compare x y of
     LT -> (x, y)
     EQ -> (x, y)
     GT -> (y, x)
 -- Sorts a tuple
 
-tSort' :: Ord a => (a, a) -> (a, a)
+tSort' :: forall a. Ord a => (a, a) -> (a, a)
 tSort' (x, y) = case compare x y of
     LT -> (y, x)
     EQ -> (x, y)
     GT -> (x, y)
 -- Sorts a tuple, reversed
 
-tReverse :: (a, b) -> (b, a)
+tReverse :: forall a b. (a, b) -> (b, a)
 tReverse (x, y) = (y, x)
 
-dupe :: a -> (a, a)
+dupe :: forall a. a -> (a, a)
 dupe a = (a, a)
 -- Creates a tuple with identical elements
 -- "duplicates" the value
@@ -39,17 +39,17 @@ dupeC a = (a, a)
 -- Like dupe and dupe', but for constrainedly polymorphic values, results in a constrainedly polymorphic tuple.
 -- constrained = instance of a given class, or here, in the case of a tuple, containing them.
 
-mapAll :: (a -> b) -> (a, a) -> (b, b)
+mapAll :: forall a b. (a -> b) -> (a, a) -> (b, b)
 mapAll f (x, y) = (f x, f y)
 -- Maps a function onto a homogenous tuple
 -- homogenous = same type in both slots
 
-mapAll' :: (forall a. a -> b) -> (x, y) -> (b, b)
+mapAll' :: forall b x y. (forall a. a -> b) -> (x, y) -> (b, b)
 mapAll' f (x, y) = (f x, f y)
 -- Maps a universally polymorphic over any (even heterogenous) tuple
 -- universally polymorphic = works for any type
 
-mapAllC :: forall (f :: * -> Constraint) b x y. (f x, f y) => (forall a. f a => a -> b) -> (x, y) -> (b, b)
+mapAllC :: forall b (f :: * -> Constraint) x y. (f x, f y) => (forall a. f a => a -> b) -> (x, y) -> (b, b)
 mapAllC f (x, y) = (f x, f y)
 -- Maps a constrainedly polymorphic over a constrained tuple
 -- constrained = instance of a given class, or here, in the case of a tuple, containing them.

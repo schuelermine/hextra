@@ -1,4 +1,4 @@
-{-# LANGUAGE QuantifiedConstraints, StandaloneDeriving, ExistentialQuantification, RankNTypes, UndecidableInstances, FlexibleInstances #-}
+{-# LANGUAGE QuantifiedConstraints, StandaloneDeriving, ExistentialQuantification, RankNTypes, UndecidableInstances, FlexibleInstances, ExplicitForAll #-}
 
 module Data.Tree.Generalized where
     
@@ -13,9 +13,15 @@ data XTree f a = XNode (f a (XTree f a))
 -- Split 1 [Split 2 [], Split 2 [], Split 2 []] =
 -- XNode (G 1 [XNode (G 2 []), XNode (G 2 []), XNode (G 2 [])])
 
+unXNode :: forall f a. XTree f a -> f a (XTree f a)
+unXNode (XNode f) = f
+
 data YTree f g a = YNode (f a (g (YTree f g a)))
 -- Slightly less general tree type
 -- Much more useful in general, though
+
+unYNode :: forall f g a. YTree f g a -> f a (g (YTree f g a))
+unYNode (YNode f) = f
 
 instance (Bifunctor f, Functor g) => Functor (YTree f g) where
     fmap f (YNode m) = YNode $ bimap f (fmap (fmap f)) m

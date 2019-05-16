@@ -1,3 +1,5 @@
+{-# LANGUAGE ExplicitForAll #-}
+
 module Data.Sqc where
 -- Defines the Sqc (pronounce: Sequence) type and related functions
 
@@ -7,12 +9,18 @@ data Sqc a = a :- Sqc a
 -- Type for infinite lists
 -- Pronounce: Sequence
 
-sqcFromList :: [a] -> a -> Sqc a
+sqcHead :: forall a. Sqc a -> a
+sqcHead (x :- _) = x
+
+sqcTail :: forall a. Sqc a -> Sqc a
+sqcTail (_ :- xs) = xs
+
+sqcFromList :: forall a. [a] -> a -> Sqc a
 sqcFromList [] a = sqcUnfold dupe a
 sqcFromList (x:xs) a = x :- sqcFromList xs a
 -- Makes a Sqc from a finite list, repeats second argument when list is exhausted
 
-sqcUnfold :: (a -> (a, b)) -> a -> Sqc b
+sqcUnfold :: forall a b. (a -> (a, b)) -> a -> Sqc b
 sqcUnfold f x =
     let (a, b) = f x
     in  b :- sqcUnfold f a
@@ -20,7 +28,7 @@ sqcUnfold f x =
 -- Doesn't require the Maybe type in the signature,
 -- since the list never ends.
 
-sqcCycle :: [a] -> Maybe (Sqc a)
+sqcCycle :: forall a. [a] -> Maybe (Sqc a)
 sqcCycle [] = Nothing
 sqcCycle l = Just $ sqcFromList (cycle l) undefined
 -- Like cycle, but for Sqc

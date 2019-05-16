@@ -1,4 +1,4 @@
-{-# LANGUAGE DataKinds, GADTs, KindSignatures, NoImplicitPrelude, TypeOperators #-}
+{-# LANGUAGE DataKinds, GADTs, KindSignatures, NoImplicitPrelude, TypeOperators, ExplicitForAll #-}
 
 module Data.Vector where
 -- Defines Vector datatype and associated functions
@@ -14,13 +14,13 @@ data Vector :: N -> * -> * where
 -- Takes a natural number to represent the length (from Data.Nat)
 -- The empty list has a length of zero, and the cons operator adds one
 
-toList :: Vector n a -> [a]
+toList :: forall a n. Vector n a -> [a]
 toList Nil        = []
 toList (Con x xs) = x : toList xs
 -- Turns a Vector into a list
 -- Discards information about the length on the type level
 
-append :: Vector n a -> Vector m a -> Vector (n + m) a
+append :: forall a n m. Vector n a -> Vector m a -> Vector (n + m) a
 append Nil ys        = ys
 append (Con x xs) ys = Con x (append xs ys)
 -- Concatenates two Vectors

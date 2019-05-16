@@ -1,9 +1,11 @@
+{-# LANGUAGE ExplicitForAll #-}
+
 module Data.Cirq.Tools where
 -- Exports tools for modifying Cirqs after the fact
 
 import Data.Cirq.Base as Cq
 
-cqWhileThen :: (a -> Bool) -> Cirq a b -> Cirq a b -> Cirq a b
+cqWhileThen :: forall a b. (a -> Bool) -> Cirq a b -> Cirq a b -> Cirq a b
 cqWhileThen f (Cirq q1) cq2@(Cirq q2) = Cirq $ \a ->
     let (cq1', b1) = q1 a
         (cq2', b2) = q2 a
@@ -15,7 +17,7 @@ cqWhileThen f (Cirq q1) cq2@(Cirq q2) = Cirq $ \a ->
 -- Effectively performs Cirq 1 while f is true, then performs Cirq 2
 -- Discards any reference to itself when Cirq 2 starts
 
-cqWhile :: (a -> Bool) -> Cirq a b -> Cirq a b -> Cirq a b
+cqWhile :: forall a b. (a -> Bool) -> Cirq a b -> Cirq a b -> Cirq a b
 cqWhile f (Cirq q1) (Cirq q2) = Cirq $ \a ->
     let (cq1', b1) = q1 a
         (cq2', b2) = q2 a
@@ -24,10 +26,10 @@ cqWhile f (Cirq q1) (Cirq q2) = Cirq $ \a ->
             False -> (cq2', b2)
 -- Like cqWhileThen, but also performs Cirq 2 even when it's output isn't being returned
 
-cqUntilThen :: (a -> Bool) -> Cirq a b -> Cirq a b -> Cirq a b
+cqUntilThen :: forall a b. (a -> Bool) -> Cirq a b -> Cirq a b -> Cirq a b
 cqUntilThen f = cqWhileThen (not . f)
 -- Like cqWhileThen, but negates the condition
 
-cqUntil :: (a -> Bool) -> Cirq a b -> Cirq a b -> Cirq a b
+cqUntil :: forall a b. (a -> Bool) -> Cirq a b -> Cirq a b -> Cirq a b
 cqUntil f = cqWhile (not . f)
 -- Like cqWhile, but negates the condition
