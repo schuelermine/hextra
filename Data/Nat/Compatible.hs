@@ -1,6 +1,6 @@
 {-# LANGUAGE ExplicitForAll #-}
 
-module Data.Nat.Compatible where
+module Data.Nat.Compatible (difference, Nat.N(Nat.Z, Nat.S)) where
 -- Nat module that doesn't clash with Prelude
 -- Only reexports functions that don't clash,
 -- does not export non-clashing aliases
