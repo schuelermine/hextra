@@ -38,6 +38,7 @@ Z     * _ = Z
 
 (-) :: N -> N -> N
 Z     - y     = y
+x     - Z     = x
 (S x) - (S y) = x - y
 -- Difference between two natural numbers
 -- This exploit the fact that,
