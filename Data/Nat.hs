@@ -62,6 +62,7 @@ max (S x) (S y) = S (max x y)
 -- Any other natural number is larger than zero, this is the recursion base case
 -- When subtracting one, you don't change which number is the largest,
 -- so you just need to add one.
+-- subtracting ^= peeling away a layer of S
 
 toInteger :: N -> P.Integer
 toInteger Z     = 0
