@@ -26,8 +26,27 @@ unYNode (YNode f) = f
 instance (Bifunctor f, Functor g) => Functor (YTree f g) where
     fmap f (YNode m) = YNode $ bimap f (fmap (fmap f)) m
 
-deriving instance (Show a, forall x y. (Show x, Show y) => Show (f x y), forall z. Show z => Show (g z)) => Show (YTree f g a)
-deriving instance (Read a, forall x y. (Read x, Read y) => Read (f x y), forall z. Read z => Read (g z)) => Read (YTree f g a)
-deriving instance (Eq a, forall x y. (Eq x, Eq y) => Eq (f x y), forall z. Eq z => Eq (g z)) => Eq (YTree f g a)
-{- deriving instance (Ord a, forall x y. (Ord x, Ord y) => Ord (f x y), forall z. Ord z => Ord (g z)) => Ord (YTree f g a) -}
--- TODO Implement Ord, or, alternatively, figure out why it's impossible
+deriving instance 
+    ( Show a
+    , forall x y. (Show x, Show y) => Show (f x y)
+    , forall z. Show z => Show (g z)
+    ) => Show (YTree f g a)
+deriving instance 
+    ( Read a
+    , forall x y. (Read x, Read y) => Read (f x y), forall z. Read z => Read (g z)) => Read (YTree f g a)
+deriving instance
+    ( Eq a
+    , forall x y. (Eq x, Eq y) => Eq (f x y)
+    , forall z. Eq z => Eq (g z)
+    ) => Eq (YTree f g a)
+deriving instance
+    ( Ord a
+    , forall x y. (Ord x, Ord y) => Ord (f x y)
+    , forall z. Ord z => Ord (g z)
+    , Eq  a
+    , forall x y. (Eq  x, Eq  y) => Eq  (f x y)
+    , forall z. Eq  z => Eq  (g z)
+    ) => Ord (YTree f g a)
+    -- This instance is very weird due to a bug in GHC 8.6.5,
+    -- see https://stackoverflow.com/questions/56192019/is-it-possible-to-derive-an-implementation-for-ord-for-this-tree-type-and-if
+    -- for more info
