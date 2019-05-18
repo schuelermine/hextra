@@ -6,7 +6,6 @@
 import Data.Cirq
 import Data.Cirq.Base
 import Data.Cirq.Basic
-import Data.Cirq.Deprecated
 import Data.Cirq.Tools
 import Data.Cirq.Utils
 import Data.Nat
@@ -29,6 +28,7 @@ import Extra.Nat
 import Extra.Num
 import Extra.Safe
 import Extra.Tuple
+import Deprecated
 import Useless
 
 main :: IO ()
