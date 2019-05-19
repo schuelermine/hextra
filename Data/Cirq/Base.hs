@@ -54,7 +54,7 @@ cqRun _ []      = []
 cqRun cq (x:xs) =
     let (cq', y) = unCirq cq x
     in  y : cqRun cq' xs
--- Iterates throug a list using a Cirq
+-- Iterates through a list using a Cirq
 -- Every step, the item is replaced by the result of the current Cirq,
 -- then, the next item is processed using the new Cirq
 
