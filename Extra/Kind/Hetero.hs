@@ -1,6 +1,6 @@
 {-# LANGUAGE TypeInType, DataKinds, ConstraintKinds, GADTs, TypeFamilies, MultiParamTypeClasses, ExplicitForAll, FlexibleInstances, UndecidableInstances, QuantifiedConstraints, RankNTypes, TypeOperators, FunctionalDependencies, ScopedTypeVariables, KindSignatures, NoStarIsType, PolyKinds #-}
 
-module Extra.Kind.Heterogenous where
+module Extra.Kind.Hetero where
 
 import Extra.Kind.Constraint
 
