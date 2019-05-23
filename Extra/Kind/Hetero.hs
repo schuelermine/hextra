@@ -16,3 +16,12 @@ data Potentially a where
 
 getDefinite :: Potentially a -> a
 getDefinite (Is f a) = f a
+
+already :: a -> Potentially a
+already = Is id
+
+applying :: a -> (a -> b) -> Potentially b
+applying = flip Is
+
+postpone :: (a -> b) -> a -> Potentially b
+postpone = Is
