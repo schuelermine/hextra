@@ -3,6 +3,8 @@
 module Data.Tree where
 -- Defines Tree types
 
+-- Various tree types:
+
 data Tree f a = Knot a (f (Tree f a)) | End
 data Skeleton f = Joint (f (Skeleton f)) | Condyle
 data NonEmptyTree f a = Node a (f (NonEmptyTree f a)) | Leaf a

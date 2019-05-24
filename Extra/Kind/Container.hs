@@ -1,6 +1,7 @@
 {-# LANGUAGE TypeInType, DataKinds, ConstraintKinds, GADTs, TypeFamilies, MultiParamTypeClasses, ExplicitForAll, FlexibleInstances, UndecidableInstances, QuantifiedConstraints, RankNTypes, TypeOperators, FunctionalDependencies, ScopedTypeVariables, KindSignatures, NoStarIsType, PolyKinds #-}
 
 module Extra.Kind.Container where
+-- TODO More commenting
 
 data InstanceOf f where
     Of :: forall f a. f a => a -> InstanceOf f

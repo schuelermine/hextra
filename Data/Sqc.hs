@@ -14,6 +14,8 @@ sqcHead (x :- _) = x
 
 sqcTail :: forall a. Sqc a -> Sqc a
 sqcTail (_ :- xs) = xs
+-- Like tail, but for Sqc
+-- Safer, since a Sqc can't be empty
 
 sqcFromList :: forall a. [a] -> a -> Sqc a
 sqcFromList [] a = sqcUnfold dupe a
@@ -26,7 +28,7 @@ sqcUnfold f x =
     in  b :- sqcUnfold f a
 -- Like unfoldr, but for Sqc
 -- Doesn't require the Maybe type in the signature,
--- since the list never ends.
+-- since the list never ends
 
 sqcCycle :: forall a. [a] -> Maybe (Sqc a)
 sqcCycle [] = Nothing

@@ -22,6 +22,7 @@ data YTree f g a = YNode (f a (g (YTree f g a)))
 
 unYNode :: forall f g a. YTree f g a -> f a (g (YTree f g a))
 unYNode (YNode f) = f
+-- Unwraps a YTree's YNode
 
 instance (Bifunctor f, Functor g) => Functor (YTree f g) where
     fmap f (YNode m) = YNode $ bimap f (fmap (fmap f)) m
