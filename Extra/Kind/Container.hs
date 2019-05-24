@@ -14,14 +14,14 @@ type ClassContainer g f = g (InstanceOf f)
 data Potentially a where
     Is :: forall a b. (b -> a) -> b -> Potentially a
 
-getDefinite :: Potentially a -> a
+getDefinite :: forall a. Potentially a -> a
 getDefinite (Is f a) = f a
 
-already :: a -> Potentially a
+already :: forall a. a -> Potentially a
 already = Is id
 
-applying :: a -> (a -> b) -> Potentially b
+applying :: forall a b. a -> (a -> b) -> Potentially b
 applying = flip Is
 
-postpone :: (a -> b) -> a -> Potentially b
+postpone :: forall a b. (a -> b) -> a -> Potentially b
 postpone = Is
