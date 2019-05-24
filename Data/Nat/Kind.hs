@@ -29,4 +29,30 @@ type instance Max 'Z b          = b
 type instance Max a 'Z          = a
 type instance Max ('S a) ('S b) = 'S (Max a b)
 
+type Zero = 'Z
+
+type One = 'S Zero
+
+type Two = 'S One
+
+type Three = 'S Two
+
+type Four = 'S Three
+
+type Five = 'S Four
+
+type Six = 'S Five
+
+type Seven = 'S Six
+
+type Eight = 'S Seven
+
+type Nine = 'S Eight
+
+type Ten = 'S Nine
+
+type Eleven = 'S Ten
+
+type Twelve = 'S Eleven
+
 -- See Data.Nat

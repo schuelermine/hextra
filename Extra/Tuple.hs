@@ -34,7 +34,7 @@ dupe' a = (a, a)
 -- Like dupe, but for universally polymorphic values.
 -- universally polymorphic = exists for any type
 
-dupeC :: forall (f :: * -> Constraint) b c. (f b, f c) => (forall a. f a => a) -> (b, c)
+dupeC :: forall (f :: Type -> Constraint) b c. (f b, f c) => (forall a. f a => a) -> (b, c)
 dupeC a = (a, a)
 -- Like dupe and dupe', but for constrainedly polymorphic values, results in a constrainedly polymorphic tuple.
 -- constrained = instance of a given class, or here, in the case of a tuple, containing them.
@@ -49,12 +49,12 @@ mapAll' f (x, y) = (f x, f y)
 -- Maps a universally polymorphic over any (even heterogenous) tuple
 -- universally polymorphic = works for any type
 
-mapAllC :: forall b (f :: * -> Constraint) x y. (f x, f y) => (forall a. f a => a -> b) -> (x, y) -> (b, b)
+mapAllC :: forall b (f :: Type -> Constraint) x y. (f x, f y) => (forall a. f a => a -> b) -> (x, y) -> (b, b)
 mapAllC f (x, y) = (f x, f y)
 -- Maps a constrainedly polymorphic over a constrained tuple
 -- constrained = instance of a given class, or here, in the case of a tuple, containing them.
 
-mapAllB :: forall (f :: * -> * -> Constraint) x y z w. (f x z, f y w) => (forall a b. f a b => a -> b) -> (x, y) -> (z, w)
+mapAllB :: forall (f :: Type -> Type -> Constraint) x y z w. (f x z, f y w) => (forall a b. f a b => a -> b) -> (x, y) -> (z, w)
 mapAllB f (x, y) = (f x, f y)
 -- Maps a coercion function over a tuple of coercibles
 -- coercion = function from something to something else
