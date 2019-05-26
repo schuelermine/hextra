@@ -7,8 +7,8 @@ module Data.Nat.Kind where
 import Data.Nat (N(Z, S))
 
 type family (+) (a :: N) (b :: N) :: N
-type instance 'Z + b     = b
-type instance ('S a) + b = 'S (a + b)
+type instance a + 'Z     = a
+type instance a + ('S b) = 'S (a + b)
 
 type family (*) (a :: N) (b :: N) :: N
 type instance 'Z * _     = 'Z

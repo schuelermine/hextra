@@ -1,4 +1,4 @@
-{-# LANGUAGE DataKinds, GADTs, KindSignatures, NoImplicitPrelude, TypeOperators, ExplicitForAll, PatternSynonyms #-}
+{-# LANGUAGE DataKinds, GADTs, KindSignatures, NoImplicitPrelude, TypeOperators, ExplicitForAll, PatternSynonyms, TupleSections #-}
 
 module Data.Vector where
 -- Defines Vector datatype and associated functions
@@ -37,7 +37,7 @@ toList (Con x xs) = x : toList xs
 -- Turns a Vector into a list
 -- Discards information about the length on the type level
 
-append :: forall a n m. Vector n a -> Vector m a -> Vector (n + m) a
+append :: forall a n m. Vector n a -> Vector m a -> Vector (m + n) a
 append Nil ys        = ys
 append (Con x xs) ys = Con x (append xs ys)
 -- Concatenates two Vectors
@@ -87,6 +87,20 @@ vmap _ Nil = Nil
 vmap f (Con x xs) = Con (f x) (vmap f xs)
 -- Like map, but for Vectors
 
+--reverse :: forall a n. Vector n a -> Vector n a
+--reverse v = f v Nil where
+--    f Nil ys = ys
+--    f (Con x xs) ys = f xs (Con x ys)
+
+prependToAll :: forall a n. a -> Vector n a -> Vector (n * Two) a
+prependToAll _ Nil = Nil
+prependToAll a (Con x xs) = Con a (Con x (prependToAll a xs))
+-- TODO: Find out how to prove that S (n + m) = (S n + m)
+
+vpair :: forall a b n m. Vector n a -> Vector m b -> Vector (n * m) (a, b)
+vpair Nil _ = Nil
+vpair (Con x xs) v = append (vmap (x,) v) (vpair xs v)
+
 plus :: forall a n. P.Num a => Vector n a -> Vector n a -> Vector n a
 plus Nil Nil = Nil
 plus (Con x xs) (Con y ys) = Con (x P.+ y) (plus xs ys)
@@ -113,7 +127,7 @@ magnitude v = P.sqrt P.$ f v where
     f :: forall a n. P.Num a => Vector n a -> a
     f Nil = 0
     f (Con x xs) = x P.^ 2 P.+ f xs
--- Vector magnitued
+-- Vector magnitude
 -- TODO More commenting
 
 deriving instance P.Show a => P.Show (Vector n a)
