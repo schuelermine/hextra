@@ -2,20 +2,27 @@
 
 ### Contents of this README
 
+**TODO:** *Rearrange entries to reflect alphabetical order*
+
 * Contents
 * Purpose
 * File info
   * Data
     * Cirq.hs
     * Cirq
-      * Full.hs
-        * Basic.hs
-        * Utils.hs
-        * Tools.hs
-        * Deprecated.hs
+      * Basic.hs
+      * Utils.hs
+      * Tools.hs
     * Nat.hs
     * Nat
+      * Internal.hs
       * Kind.hs
+    * Tree.hs
+    * Tree
+      * Generalized.hs
+    * Sqc.hs
+    * Vector.hs
+  * Extra.hs
   * Extra
     * Tuple.hs
     * Bifunctor.hs
@@ -23,6 +30,7 @@
     * Function.hs
     * Maybe.hs
     * Safe.hs
+  * Deprecated.hs
 
 ### Purpose
 
@@ -40,9 +48,9 @@ Exports all functions defined in the modules in the `Cirq` *folder* as a neat, c
 Don't import alongside the other Cirq modules.
 No reason for that, it's just bad style and bad practice.
 
-#### Data/Cirq/Full.hs
+#### Data/Cirq/Base.hs
 
-`Data.Cirq.Full`
+`Data.Cirq.Base`
 
 Defines the Cirq type and the basic primitives.
 
@@ -65,15 +73,9 @@ Maybe a bad name?
 
 Defines some tools for manipulating `Cirq`s
 
-#### Data/Cirq/Deprecated.hs
+#### Data/Nat.hs
 
-`Data.Cirq.Deprecated`
-
-Old functions that were rubbish, but whose code I have trouble letting go of.
-Thinking of either deleting this or moving it to its own folder, so other folder's "deprecated" can land there too.
-
-Doesn't export anything.
-Has a `module` header so the compiler stops complaining about the missing `main`.
+Reexports instances and functions that don't clash with Prelude from Data.Nat.Internal
 
 #### Data/Nat/Internal.hs
 
@@ -81,11 +83,9 @@ Has a `module` header so the compiler stops complaining about the missing `main`
 
 Defines natural numbers inductively and operations on them.
 Also defines instances of various classes for the natural number type.
-Not intended for use. Use `Data.Nat` instead.
+Not intended for use. Use `Data.Nat` instead. (doesn't clash with Prelude)
 
 Import qualified.
-
-TODO: Consider splitting off a Nat module that doesn't clash with `Prelude`
 
 #### Data/Nat/Kind.hs
 
@@ -93,7 +93,8 @@ TODO: Consider splitting off a Nat module that doesn't clash with `Prelude`
 
 Defines the type families needed to make type-level natural numbers work.
 
-Requires UndecidableInstances, TypeOperators and DataKinds.
+Requires TypeOperators and DataKinds.
+*TODO: Test if it works without UndecidableInstances*
 
 #### Data/Vector.hs
 
@@ -105,7 +106,7 @@ WIP, many functions not even thought up yet.
 Requires DataKinds.
 Uses GADTs and KindSignatures
 
-TODO: Consider if NoImplicitPrelude is necessary.
+*TODO: Consider if NoImplicitPrelude is necessary.*
 
 #### Extra/Tuple.hs
 
@@ -154,3 +155,14 @@ Defines safer versions of various Prelude and other standard library functions.
 
 Import qualified.
 Uses NoImplicitPrelude.
+
+#### Deprecated.hs
+
+`Deprecated`
+
+Old functions that were rubbish, but whose code I have trouble letting go of.
+Yes, it's ridiculous because of Git, but by golly who'nna predict when's gonna be useful 'gain? Ehm?
+
+Doesn't export anything.
+*TODO: should export something, maybe?*
+Has a `module` header so the compiler stops complaining about the missing `main`.
