@@ -3,6 +3,7 @@
 ### Contents of this README
 
 **TODO:** *Rearrange entries to reflect alphabetical order*
+**TODO:** *Write entries for Extra modules*
 
 * Contents
 * Purpose
@@ -30,7 +31,15 @@
     * Function.hs
     * Maybe.hs
     * Safe.hs
+    * Applicative.hs
+    * Integral.hs
+    * List.hs
+    * Monad.hs
+    * Nat.hs
+    * Num.hs
   * Deprecated.hs
+  * TestAll.hs
+  * Useless.hs
 
 ### Purpose
 
@@ -95,6 +104,12 @@ Defines the type families needed to make type-level natural numbers work.
 
 Requires TypeOperators and DataKinds.
 *TODO: Test if it works without UndecidableInstances*
+
+#### Data/Sqc.hs
+
+`Data.Sqc`
+
+Defines the Sqc type, which represents infinite lists, and operations concerning them
 
 #### Data/Vector.hs
 
