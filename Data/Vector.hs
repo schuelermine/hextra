@@ -1,4 +1,4 @@
-{-# LANGUAGE DataKinds, GADTs, KindSignatures, NoImplicitPrelude, TypeOperators, ExplicitForAll, PatternSynonyms, TupleSections #-}
+{-# LANGUAGE DataKinds, GADTs, KindSignatures, NoImplicitPrelude, TypeOperators, ExplicitForAll, PatternSynonyms, TupleSections, StandaloneDeriving, NoStarIsType #-}
 
 module Data.Vector where
 -- Defines Vector datatype and associated functions

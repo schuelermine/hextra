@@ -9,7 +9,7 @@ import Data.Cirq.Basic
 import Data.Cirq.Tools
 import Data.Cirq.Utils
 import Data.Nat
-import Data.Nat.Compatible
+import Data.Nat.Internal
 import Data.Nat.Kind
 import Data.Tree
 import Data.Tree.Generalized
