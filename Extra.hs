@@ -10,7 +10,7 @@ import Extra.Function
 iff a b c = if a then b else c
 
 (#) = elem
-(?) = uncurry3' iff
+($?) = uncurry3' iff
 (!) = seq
 (§) = uncurry
 (<=>) = compare
@@ -25,3 +25,6 @@ promptfor = (getLine >>=)
 
 wrapunwrap :: (a -> b, b -> a) -> (b -> b) -> a -> a
 wrapunwrap (wrap, unwrap) f = unwrap . f . wrap
+
+symmetrical :: (a -> b) -> (a -> b -> Bool) -> a -> Bool
+symmetrical f g a = g a (f a)
