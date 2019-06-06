@@ -22,3 +22,6 @@ readpromptfor f = (getLine >>= f . read)
 
 promptfor :: (String -> IO b) -> IO b
 promptfor = (getLine >>=)
+
+wrapunwrap :: (a -> b, b -> a) -> (b -> b) -> a -> a
+wrapunwrap (wrap, unwrap) f = unwrap . f . wrap

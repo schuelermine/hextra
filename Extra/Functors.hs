@@ -10,9 +10,6 @@ class Functor f where
 class Bifunctor f where
     bimap :: (a -> x) -> (b -> y) -> f a b -> f x y
 
-class Bicofunctor f where
-    bicomap :: (f a b -> f x y) -> Either (a -> x) (b -> y)
-
 class Bicontravariant f where
     bicontramap :: (a -> x) -> (b -> y) -> f x y -> f a b
 
@@ -24,18 +21,6 @@ class Contrafunctor f where
 
 class Invariant f where
     invmap :: (a -> b) -> (b -> a) -> f a -> f b
-
-class Cofunctor f where
-    comap :: (f a -> f b) -> a -> b
-
-class Contracofunctor f where
-    contracomap :: (f a -> f b) -> b -> a
-
-class Bicontracofunctor f where
-    bicontracomap :: (f a b -> f x y) -> Either (x -> a) (y -> b)
-
-class Procofunctor f where
-    procomap :: (f a b -> f x y) -> Either (x -> a) (b -> y)
 
 class Functor f => Applicative f where
     pure :: a -> f a
