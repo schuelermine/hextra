@@ -74,7 +74,7 @@ class Bifunctor f => Biapplicative f where
     f <<*>> x = bimap (uncurry ($)) (uncurry ($)) (f <<:>> x)
     x *>> y = bimap (flip const) (flip const) x <<*>> y
     x <<* y = bimap (const) (const) x <<*>> y
-    {-# MINIMAL (bipure, (<<*>>)) | (biunit, (<<:>>)) #-}
+    {-# MINIMAL (bipure | biunit), ((<<*>>), (<<:>>)) #-}
 
 class Applicative m => Monad m where
     return :: a -> m a
