@@ -48,8 +48,15 @@ class Functor f => Apply f where
     multiply x y = apply ((,) <$> x) y
     {-# MINIMAL apply | multiply #-}
 
-class Functor f => Coapplicative f where
-    cozip :: f (Either a b) -> Either (f a) (f b)
+class Decisive f where
+    split :: f (Either a b) -> Either (f a) (f b)
+
+class Unmultiply f where
+    unmultiply :: f (a, b) -> (f a, f b)
+
+class Deapplicative f where
+    dezip :: f (Either a b) -> Either (f a) (f b)
+    depure :: f a -> a
 
 class Bifunctor f => Biapplicative f where
     bipure :: a -> b -> f a b
@@ -71,10 +78,11 @@ class Applicative m => Monad m where
     (>>=) :: m a -> (a -> m b) -> m b
     join :: m (m a) -> m a
     (>=>) :: (a -> m b) -> (b -> m c) -> a -> m c
+    return = pure
     m >>= f = join $ map f m
     join = (>>= id)
     f >=> g = \x -> f x >>= g
-    {-# MINIMAL return , ((>>=), join)#-}
+    {-# MINIMAL (>>=) | join#-}
 
 class Functor w => Comonad w where
     extract :: w a -> a
