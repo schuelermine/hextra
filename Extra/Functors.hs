@@ -57,9 +57,9 @@ class Decisive f where
 class Unmultiply f where
     unmultiply :: f (a, b) -> (f a, f b)
 
-class Deapplicative f where
-    dezip :: f (Either a b) -> Either (f a) (f b)
-    depure :: f a -> a
+class Unapplicative f where
+    (>:<) :: f (Either a b) -> Either (f a) (f b)
+    unpure :: f a -> a
 
 class Bifunctor f => Biapplicative f where
     bipure :: a -> b -> f a b
