@@ -42,7 +42,7 @@ class Functor f => Applicative f where
     x <:> y = ((,) <$> x) <*> y
     x *> y = (flip const <$> x) <*> y
     x <* y = (const <$> x) <*> y
-    {-# MINIMAL (pure, (<*>)) | (unit, (<:>)) #-}
+    {-# MINIMAL (pure | unit), ((<*>) | (<:>)) #-}
 
 class Functor f => Apply f where
     apply :: f (a -> b) -> f a -> f b
