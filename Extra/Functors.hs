@@ -20,11 +20,14 @@ class Bicontravariant f where
 class Profunctor f where
     promap :: (a -> b) -> (x -> y) -> f b x -> f a y
 
-class Contrafunctor f where
+class Contravariant f where
     contramap :: (a -> b) -> f b -> f a
 
 class Invariant f where
     invmap :: (a -> b) -> (b -> a) -> f a -> f b
+
+class Unfunctor f where
+    unmap :: (f a -> f b) -> a -> b
 
 class Functor f => Applicative f where
     pure :: a -> f a
@@ -87,12 +90,12 @@ class Applicative m => Monad m where
 class Functor w => Comonad w where
     extract :: w a -> a
     expand :: w a -> w (w a)
-    extend :: (w a -> b) -> w a -> w b
+    (=>>) :: w a -> (w a -> b) -> w b
     (=>=) :: (w a -> b) -> (w b -> c) -> w a -> c
-    expand = extend id
-    extend f = map f . expand
-    f =>= g = g . extend f
-    {-# MINIMAL extract , (expand | extend) #-}
+    expand = (=>> id)
+    x =>> f = map f (expand x)
+    f =>= g = g . (=>> f)
+    {-# MINIMAL extract , (expand | (=>>)) #-}
 
 -- class 
 
