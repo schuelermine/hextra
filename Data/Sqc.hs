@@ -29,6 +29,8 @@ streamUnfold f x =
 -- Like unfoldr, but for Stream
 -- Doesn't require the Maybe type in the signature,
 -- since the list never ends
+-- No distinction between right and left unfolds,
+-- since you can't build Streams from the right
 
 streamCycle :: forall a. [a] -> Maybe (Stream a)
 streamCycle [] = Nothing
