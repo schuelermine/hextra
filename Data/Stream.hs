@@ -28,7 +28,7 @@ streamUnfold f x =
     in  b :- streamUnfold f a
 -- Like unfoldr, but for Stream
 -- Doesn't require the Maybe type in the signature,
--- since the list never ends
+-- since a Stream never ends
 -- No distinction between right and left unfolds,
 -- since you can't build Streams from the right
 
