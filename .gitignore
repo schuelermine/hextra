@@ -1,5 +1,5 @@
 warnings.log
 std.log
 notesonhaskell.txt
-*.o
 *.hi
+*.o
