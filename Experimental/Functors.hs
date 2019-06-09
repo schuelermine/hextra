@@ -1,8 +1,8 @@
 {-# LANGUAGE NoImplicitPrelude, NoMonomorphismRestriction, FlexibleInstances, UndecidableInstances, MultiParamTypeClasses, AllowAmbiguousTypes, ExplicitForAll, RankNTypes #-}
 
-module Extra.Functors where
+module Experimental.Functors where
 
-import Prelude as P (Either, const, uncurry, ($), (.), id, flip)
+import Prelude as P hiding (Functor, Monad, map, (<$), pure, (<*>), return, (>>=), (<$>), (*>), (<*))
 
 class Functor f where
     map :: forall a b. (a -> b) -> f a -> f b
@@ -14,7 +14,7 @@ class Bifunctor f where
     bimap :: forall a b x y. (a -> x) -> (b -> y) -> f a b -> f x y
 
 class ContravariantBifunctor f where
-    contrabiamap :: forall a b x y. (a -> x) -> (b -> y) -> f x y -> f a b
+    contrabimap :: forall a b x y. (a -> x) -> (b -> y) -> f x y -> f a b
 
 class Profunctor f where
     promap :: forall a b x y. (a -> b) -> (x -> y) -> f b x -> f a y
@@ -22,11 +22,14 @@ class Profunctor f where
 class ContravariantFunctor f where
     contramap :: forall a b. (a -> b) -> f b -> f a
 
-class Invariant f where
+class InvariantFunctor f where
     invmap :: forall a b. (a -> b) -> (b -> a) -> f a -> f b
 
 class Unfunctor f where
     unmap :: forall a b. (f a -> f b) -> a -> b
+
+class Unbifunctor f where
+    unbimap :: forall a b x y. (f a b -> f x y) -> ((a -> x), (b -> y))
 
 class (Functor f, Unfunctor f) => SplitFullFunctor f
 
@@ -64,6 +67,9 @@ class Functor f => Apply f where
 class DecisiveFunctor f where
     decide :: forall a b. f (Either a b) -> Either (f a) (f b)
 
+class DecisiveUnfunctor f where
+    undecide :: forall a b. Either (f a) (f b) -> f (Either a b)
+
 class Unmultiply f where
     unmultiply :: forall a b. f (a, b) -> (f a, f b)
 
@@ -84,7 +90,7 @@ class Bifunctor f => BiapplicativeFunctor f where
     x <<:>> y = (bimap (,) (,) x) <<*>> y
     x *>> y = bimap (flip const) (flip const) x <<*>> y
     x <<* y = bimap (const) (const) x <<*>> y
-    {-# MINIMAL (bipure | biunit), ((<<*>>), (<<:>>)) #-}
+    {-# MINIMAL (bipure | biunit), ((<<*>>) | (<<:>>)) #-}
 
 class Bifunctor f => Biapply f where
     biapply :: forall a b x y. f (a -> x) (b -> y) -> f a b -> f x y
@@ -101,7 +107,7 @@ class ApplicativeFunctor m => Monad m where
     join = (>>= id)
     m >>= f = join $ map f m
     f >=> g = \x -> f x >>= g
-    {-# MINIMAL (>>=) | join#-}
+    {-# MINIMAL (>>=) | join #-}
 
 class Functor w => Comonad w where
     extract :: forall a. w a -> a
@@ -111,7 +117,7 @@ class Functor w => Comonad w where
     expand = (=>> id)
     x =>> f = map f (expand x)
     f =>= g = g . (=>> f)
-    {-# MINIMAL extract , (expand | (=>>)) #-}
+    {-# MINIMAL extract, (expand | (=>>)) #-}
 
 class (Bifunctor l, Bifunctor r) => Bimonad l r where
     bireturnl :: forall a b. a -> l a b
@@ -125,6 +131,13 @@ class (Bifunctor l, Bifunctor r) => Bimonad l r where
     bijoinl x = bibindl x id id
     bijoinr x = bibindr x id id
     {-# MINIMAL bireturnl, bireturnr, ((bijoinl, bijoinr) | (bibindl, bibindr)) #-}
+
+class Bimonad m m => JointBimonad m
+instance Bimonad m m => JointBimonad m
+
+--class Cobimonad l r where
+--    biextractl :: forall a b. l a b -> a
+--    biextractr :: forall a b. r a b -> b
 
 (<#>) = contramap
 (<$>) = map
