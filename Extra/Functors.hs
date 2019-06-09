@@ -3,7 +3,6 @@
 module Extra.Functors where
 
 import Prelude as P (Either, const, uncurry, ($), (.), id, flip)
---import Extra.Tuple (dupe) -- (used to be for dupe f <<$>>)
 
 class Functor f where
     map :: forall a b. (a -> b) -> f a -> f b
