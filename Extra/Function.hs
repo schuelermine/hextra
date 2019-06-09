@@ -36,11 +36,14 @@ infixr 9 .>
 infixr 9 .<
 (.<) :: forall a b c. (a -> a -> b) -> (b -> c) -> a -> a -> c
 (.<) = flip (.>)
+-- Flipped (.>)
 
 infixr 9 >.
 (>.) :: forall a b c. (a -> b) -> (b -> b -> c) -> a -> a -> c
 (>.) = flip (<.)
+-- Flipped (<.)
 
-infixr 9 >>>>
-(>>>>) :: forall a b c. (a -> b) -> (b -> c) -> a -> c
-(>>>>) = flip (.)
+infixr 9 ?
+(?) :: forall a b c. (a -> b) -> (b -> c) -> a -> c
+(?) = flip (.)
+-- Flipped (.)
