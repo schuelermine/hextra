@@ -45,9 +45,6 @@ genericGetItems ns a = (getItem a) <$> ns
 mono :: x -> Array x
 mono x = Array . const $ Just x
 
-instance Show x => Show (Array x) where
-    show a = show $ getItems [0..] a
-
 instance Functor Array where
     fmap f a = Array $ \n ->
         f <$> (getItem a n)
