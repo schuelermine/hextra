@@ -4,7 +4,7 @@ module Experimental.Functors.Instances where
 
 import Prelude as P hiding (Functor, Monad, map, (<$), pure, (<*>), return, (>>=), (<$>), (*>), (<*))
 
-import Extra.Functors
+import Experimental.Functors
 
 instance Functor [] where
     map _ [] = []
