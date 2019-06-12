@@ -2,13 +2,23 @@
 
 module Experimental.ListArray where
 
-import Data.Finite
-import Data.Singletons.TypeLits
+import Data.Natural
 
-data VectorArray n x where
-    VectorArray :: SNat n -> (Finite n -> x) -> VectorArray n x
+data ListArray x where
+    ListArray :: Natural -> x -> (Natural -> x) -> ListArray x
 
-getItem :: VectorArray n x -> Finite n -> x
-getItem (VectorArray _ f) = f
-getLength :: VectorArray n x -> SNat n
-getLength (VectorArray sn _) = sn
+getFallback :: ListArray x -> x
+getFallback (ListArray _ x _) = x
+
+getItem :: ListArray x -> Natural -> x
+getItem (ListArray _ _ f) = f
+
+getLength :: ListArray x -> Natural
+getLength (ListArray n _ _) = n
+
+append (ListArray n x f) (ListArray m _ g) = (ListArray o z h) where
+    o = n + m
+    z = x
+    h p | p <= n = f p
+        | p > n = g (p - n)
+        | otherwise = z
