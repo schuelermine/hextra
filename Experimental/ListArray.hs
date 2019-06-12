@@ -5,20 +5,16 @@ module Experimental.ListArray where
 import Data.Natural
 
 data ListArray x where
-    ListArray :: Natural -> x -> (Natural -> x) -> ListArray x
+    ListArray :: Natural -> (Natural -> Maybe x) -> ListArray x
 
-getFallback :: ListArray x -> x
-getFallback (ListArray _ x _) = x
-
-getItem :: ListArray x -> Natural -> x
-getItem (ListArray _ _ f) = f
+getItem :: ListArray x -> Natural -> Maybe x
+getItem (ListArray _ f) = f
 
 getLength :: ListArray x -> Natural
-getLength (ListArray n _ _) = n
+getLength (ListArray n _) = n
 
-append (ListArray n x f) (ListArray m _ g) = (ListArray o z h) where
+append :: ListArray x -> ListArray x -> ListArray x
+append (ListArray n f) (ListArray m g) = (ListArray o h) where
     o = n + m
-    z = x
     h p | p <= n = f p
-        | p > n = g (p - n)
-        | otherwise = z
+        | p > n && p < o = g (p - n)
