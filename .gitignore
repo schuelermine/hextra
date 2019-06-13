@@ -3,3 +3,4 @@ std.log
 notesonhaskell.txt
 *.hi
 *.o
+*.hsx
