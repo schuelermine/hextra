@@ -1,6 +1,6 @@
 {-# LANGUAGE NoImplicitPrelude, ExplicitForAll #-}
 
-module Data.Nat.Internal where
+module Data.Hextra.Nat.Internal where
 -- Defines natural numbers and operations on them
 
 import qualified Prelude as P

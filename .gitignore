@@ -1,6 +1,5 @@
-warnings.log
-std.log
 notesonhaskell.txt
+*log
 *.hi
 *.o
 *.hsx
