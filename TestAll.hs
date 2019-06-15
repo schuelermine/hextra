@@ -8,9 +8,10 @@ import Data.Cirq.Base
 import Data.Cirq.Basic
 import Data.Cirq.Tools
 import Data.Cirq.Utils
-import Data.Nat
-import Data.Nat.Internal
-import Data.Nat.Kind
+import Data.Hextra.Nat
+import Data.Hextra.Nat.Internal
+import Data.Hextra.Nat.Kind
+import Data.Hextra.Nat.Finite
 import Data.Tree
 import Data.Tree.Generalized
 import Data.Sqc
@@ -20,6 +21,8 @@ import Extra.Applicative
 import Extra.Bifunctor
 import Extra.CirqUnpacked
 import Extra.Function
+import Extra.Functor
+import Extra.Group
 import Extra.Integral
 import Extra.List
 import Extra.Maybe
