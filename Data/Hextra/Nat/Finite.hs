@@ -1,8 +1,8 @@
 {-# LANGUAGE NoImplicitPrelude, ExplicitForAll, GADTs, DataKinds, TypeOperators #-}
 
-module Data.Nat.Finite where
+module Data.Hextra.Nat.Finite where
 
-import qualified Data.Nat as N
+import qualified Data.Hextra.Nat as N
 
 data Finite n where
     FZ :: Finite n

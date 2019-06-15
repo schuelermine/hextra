@@ -1,10 +1,10 @@
 {-# LANGUAGE DataKinds, TypeFamilies, TypeOperators, NoImplicitPrelude, UndecidableInstances, NoStarIsType #-}
 
-module Data.Nat.Kind where
+module Data.Hextra.Nat.Kind where
 -- Defines versions of (+), (*), (-) as type families (using DataKinds)
 -- For details on definitions, see Data.Nat
 
-import Data.Nat (N(Z, S))
+import Data.Hextra.Nat (N(Z, S))
 
 type family (+) (a :: N) (b :: N) :: N
 type instance a + 'Z     = a
