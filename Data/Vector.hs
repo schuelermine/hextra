@@ -5,6 +5,7 @@ module Data.Vector where
 -- Useful when you want to make sure things similar to (!!) or take always work
 
 import Data.Nat as Nat
+import Data.Nat.Finite as Fin
 import Data.Nat.Kind as NatK
 import qualified Prelude as P
 import Data.Kind
@@ -28,6 +29,14 @@ pattern Vector5 a b c d e = Con a (Con b (Con c (Con d (Con e Nil))))
 pattern Vector6 a b c d e f = Con a (Con b (Con c (Con d (Con e (Con f Nil)))))
 pattern Vector7 a b c d e f g = Con a (Con b (Con c (Con d (Con e (Con f (Con g Nil))))))
 pattern Vector8 a b c d e f g h = Con a (Con b (Con c (Con d (Con e (Con f (Con g (Con h Nil)))))))
+pattern VectorHead1 a x = Con a x
+pattern VectorHead2 a b x = Con a (Con b x)
+pattern VectorHead3 a b c x = Con a (Con b (Con c x))
+pattern VectorHead4 a b c d x = Con a (Con b (Con c (Con d x)))
+pattern VectorHead5 a b c d e x = Con a (Con b (Con c (Con d (Con e x))))
+pattern VectorHead6 a b c d e f x = Con a (Con b (Con c (Con d (Con e (Con f x)))))
+pattern VectorHead7 a b c d e f g x = Con a (Con b (Con c (Con d (Con e (Con f (Con g x))))))
+pattern VectorHead8 a b c d e f g h x = Con a (Con b (Con c (Con d (Con e (Con f (Con g (Con h x)))))))
 -- Useful pattern synonyms for Vectors of size 1 - 8
 -- Size 8 is useful because of octonions
 
@@ -129,6 +138,10 @@ magnitude v = P.sqrt P.$ f v where
     f (Con x xs) = x P.^ 2 P.+ f xs
 -- Vector magnitude
 -- TODO More commenting
+
+takeSafe :: Vector n a -> Fin.Finite ('S n) -> a
+takeSafe (Con x xs) FZ = x
+takeSafe (Con x xs) (FS n) = takeSafe xs n
 
 deriving instance P.Show a => P.Show (Vector n a)
 deriving instance P.Ord a => P.Ord (Vector n a)
