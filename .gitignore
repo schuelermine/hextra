@@ -1,5 +1,5 @@
 notesonhaskell.txt
-*log
+*.log
 *.hi
 *.o
 *.hsx
