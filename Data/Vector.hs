@@ -4,9 +4,9 @@ module Data.Vector where
 -- Defines Vector datatype and associated functions
 -- Useful when you want to make sure things similar to (!!) or take always work
 
-import Data.Nat as Nat
-import Data.Nat.Finite as Fin
-import Data.Nat.Kind as NatK
+import Data.Hextra.Nat as Nat
+import Data.Hextra.Nat.Finite as Fin
+import Data.Hextra.Nat.Kind as NatK
 import qualified Prelude as P
 import Data.Kind
 
