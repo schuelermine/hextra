@@ -3,3 +3,4 @@ notesonhaskell.txt
 *.hi
 *.o
 *.hsx
+*.ignore
