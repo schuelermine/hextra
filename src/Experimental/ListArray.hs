@@ -2,15 +2,15 @@
 
 module Experimental.ListArray where
 
-import Data.Natural
+import Data.Hextra.Nat
 
 data ListArray x where
-    ListArray :: Natural -> (Natural -> Maybe x) -> ListArray x
+    ListArray :: N -> (N -> Maybe x) -> ListArray x
 
-getItem :: ListArray x -> Natural -> Maybe x
+getItem :: ListArray x -> N -> Maybe x
 getItem (ListArray _ f) = f
 
-getLength :: ListArray x -> Natural
+getLength :: ListArray x -> N
 getLength (ListArray n _) = n
 
 append :: ListArray x -> ListArray x -> ListArray x
