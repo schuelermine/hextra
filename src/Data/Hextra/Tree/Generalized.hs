@@ -1,6 +1,6 @@
 {-# LANGUAGE QuantifiedConstraints, StandaloneDeriving, ExistentialQuantification, RankNTypes, UndecidableInstances, FlexibleInstances, ExplicitForAll #-}
 
-module Data.Tree.Generalized where
+module Data.Hextra.Tree.Generalized where
     
 import Data.Bifunctor
 
