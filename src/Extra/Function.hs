@@ -23,6 +23,19 @@ uncurry4 :: forall a b c d e. (a -> b -> c -> d -> e) -> (a, b, c, d) -> e
 uncurry4 f (x, y, z, w) = f x y z w
 -- Like uncurry, but for functions with four arguments
 
+applyIfJustMonoid :: forall a b x. Monoid b => (a -> b) -> (x -> a) -> Maybe x -> b
+applyIfJustMonoid f g m = case m of
+    Just x -> g (f x)
+    Nothing -> mempty
+
+combineIfJust :: forall a b x. (a -> b -> b) -> (x -> a) -> Maybe x -> b -> b
+combineIfJust g f m b = case m of
+    Just x -> g (f x) b
+    Nothing -> b
+-- Combines two things where one of them is wrapped in Maybe
+-- If the Maybe thing is Nothing, just return the plain thing
+-- Requires that 2nd argument type and output type of the combining function are the same
+
 infixr 9 <.
 (<.) :: forall b c a. (b -> b -> c) -> (a -> b) -> a -> a -> c
 (<.) f g x y = f (g x) (g y)
