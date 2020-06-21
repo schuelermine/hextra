@@ -6,4 +6,4 @@ import Extra.Function as Fun
 
 (<->) :: forall n. (Num n) => n -> n -> n
 (<->) = abs .> (-)
--- Absolute difference of Nums
+-- Absolute difference of Nums.

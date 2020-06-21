@@ -25,36 +25,36 @@ tReverse (x, y) = (y, x)
 
 dupe :: forall a. a -> (a, a)
 dupe a = (a, a)
--- Creates a tuple with identical elements
--- "duplicates" the value
+-- Creates a tuple with identical elements.
+-- "Duplicates" the value.
 
 dupe' :: forall b c. (forall a. a) -> (b, c)
 dupe' a = (a, a)
 -- Creates a tuple from a universally polymorphic value.
--- Like dupe, but for universally polymorphic values.
+-- Like dupe, but for universally polymorphic values
 -- universally polymorphic = exists for any type
 
 dupeC :: forall (f :: Type -> Constraint) b c. (f b, f c) => (forall a. f a => a) -> (b, c)
 dupeC a = (a, a)
--- Like dupe and dupe', but for constrainedly polymorphic values, results in a constrainedly polymorphic tuple.
--- constrained = instance of a given class, or here, in the case of a tuple, containing them.
+-- Like dupe and dupe', but for constrainedly polymorphic values, results in a constrainedly polymorphic tuple
+-- constrained = instance of a given class, or here, in the case of a tuple, containing them
 
 bothmap :: forall a b. (a -> b) -> (a, a) -> (b, b)
 bothmap f (x, y) = (f x, f y)
--- Maps a function onto a homogenous tuple
+-- Maps a function onto a homogenous tuple.
 -- homogenous = same type in both slots
 
 bothmap' :: forall b x y. (forall a. a -> b) -> (x, y) -> (b, b)
 bothmap' f (x, y) = (f x, f y)
--- Maps a universally polymorphic over any (even heterogenous) tuple
+-- Maps a universally polymorphic over any (even heterogenous) tuple.
 -- universally polymorphic = works for any type
 
 bothmapC :: forall b (f :: Type -> Constraint) x y. (f x, f y) => (forall a. f a => a -> b) -> (x, y) -> (b, b)
 bothmapC f (x, y) = (f x, f y)
--- Maps a constrainedly polymorphic over a constrained tuple
--- constrained = instance of a given class, or here, in the case of a tuple, containing them.
+-- Maps a constrainedly polymorphic over a constrained tuple.
+-- constrained = instance of a given class, or here, in the case of a tuple, containing them
 
 bothmapB :: forall (f :: Type -> Type -> Constraint) x y z w. (f x z, f y w) => (forall a b. f a b => a -> b) -> (x, y) -> (z, w)
 bothmapB f (x, y) = (f x, f y)
--- Maps a coercion function over a tuple of coercibles
+-- Maps a coercion function over a tuple of coercibles.
 -- coercion = function from something to something else

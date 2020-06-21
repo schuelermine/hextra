@@ -1,0 +1,1 @@
+Copy-Item .\NotYet.hs ..\src\CompileToTest.hs

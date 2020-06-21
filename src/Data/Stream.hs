@@ -7,7 +7,6 @@ import Extra.Tuple as Tup
 
 data Stream a = a :- Stream a
 -- Type for infinite lists
--- Pronounce: Sequence
 
 streamHead :: forall a. Stream a -> a
 streamHead (x :- _) = x
@@ -20,7 +19,7 @@ streamTail (_ :- xs) = xs
 streamFromList :: forall a. [a] -> a -> Stream a
 streamFromList [] a = streamUnfold dupe a
 streamFromList (x:xs) a = x :- streamFromList xs a
--- Makes a Stream from a finite list, repeats second argument when list is exhausted
+-- Makes a Stream from a finite list, repeats second argument when list is exhausted.
 
 streamUnfold :: forall a b. (a -> (a, b)) -> a -> Stream b
 streamUnfold f x =
@@ -28,12 +27,12 @@ streamUnfold f x =
     in  b :- streamUnfold f a
 -- Like unfoldr, but for Stream
 -- Doesn't require the Maybe type in the signature,
--- since a Stream never ends
--- No distinction between right and left unfolds,
--- since you can't build Streams from the right
+-- since a Stream never ends.
+-- No marking of unfold direction in the name,
+-- since you can't build Streams from the right.
 
 streamCycle :: forall a. [a] -> Maybe (Stream a)
 streamCycle [] = Nothing
 streamCycle l = Just $ streamFromList (cycle l) undefined
 -- Like cycle, but for Stream
--- Safer, returns Nothing when the input is an empty list
+-- Safe, returns Nothing when the input is an empty list.

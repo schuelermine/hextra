@@ -6,7 +6,7 @@ import Extra.Function as Fun
 
 toIntegral :: forall i j. (Integral i, Integral j) => i -> j
 toIntegral = fromInteger . toInteger
--- Converts any Integral to any other Integral
+-- Converts any Integral to any other Integral.
 
 plus :: forall i j. (Integral i, Integral j) => i -> i -> j
 plus = toIntegral .> (+)

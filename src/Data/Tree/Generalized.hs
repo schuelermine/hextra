@@ -4,10 +4,12 @@ module Data.Tree.Generalized where
     
 import Data.Bifunctor
 
+-- TODO Consider renaming these
+
 data XTree f a = XNode (f a (XTree f a))
 -- Extremely general tree type
--- Generalizes all previously listed examples,
--- though cumbersome to use
+-- Generalizes all other examples,
+-- but is cumbersome to use.
 -- For example, type Bush [] = XTree G where data G x y = G x [y]
 -- Split 1 [] = XNode (G 1 [])
 -- Split 1 [Split 2 [], Split 2 [], Split 2 []] =
@@ -22,7 +24,7 @@ data YTree f g a = YNode (f a (g (YTree f g a)))
 
 unYNode :: forall f g a. YTree f g a -> f a (g (YTree f g a))
 unYNode (YNode f) = f
--- Unwraps a YTree's YNode
+-- Unwraps a YTree's YNode.
 
 instance (Bifunctor f, Functor g) => Functor (YTree f g) where
     fmap f (YNode m) = YNode $ bimap f (fmap (fmap f)) m
@@ -48,6 +50,6 @@ deriving instance
     , forall x y. (Eq  x, Eq  y) => Eq  (f x y)
     , forall z. Eq  z => Eq  (g z)
     ) => Ord (YTree f g a)
-    -- This instance is very weird due to a bug in GHC 8.6.5,
-    -- see https://stackoverflow.com/questions/56192019/is-it-possible-to-derive-an-implementation-for-ord-for-this-tree-type-and-if
-    -- for more info
+    -- This instance is very weird due to the weirdness that is quantified constraints.
+    -- See __ for more details.
+    -- TODO Add Link

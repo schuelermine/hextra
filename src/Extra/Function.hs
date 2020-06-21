@@ -3,6 +3,7 @@
 module Extra.Function where
 -- Extra functions relating to functions (higher-order functions)
 
+import Extra.Maybe
 
 curry3 :: forall a b c d. ((a, b, c) -> d) -> a -> b -> c -> d
 curry3 f x y z = f (x, y, z)
@@ -23,15 +24,11 @@ uncurry4 :: forall a b c d e. (a -> b -> c -> d -> e) -> (a, b, c, d) -> e
 uncurry4 f (x, y, z, w) = f x y z w
 -- Like uncurry, but for functions with four arguments
 
-applyIfJustMonoid :: forall a b x. Monoid b => (a -> b) -> (x -> a) -> Maybe x -> b
-applyIfJustMonoid f g m = case m of
-    Just x -> g (f x)
-    Nothing -> mempty
+applyIfJustMonoid :: forall a b x. Monoid x => (a -> b) -> (x -> a) -> Maybe x -> b
+applyIfJustMonoid g f m = g . f $ fromNothing mempty m
 
-combineIfJust :: forall a b x. (a -> b -> b) -> (x -> a) -> Maybe x -> b -> b
-combineIfJust g f m b = case m of
-    Just x -> g (f x) b
-    Nothing -> b
+combineIfJust' :: forall a b x. (a -> b -> b) -> (x -> a) -> Maybe x -> b -> b
+combineIfJust' g f m b = fromNothing id ((g . f) <$> m) b
 -- Combines two things where one of them is wrapped in Maybe
 -- If the Maybe thing is Nothing, just return the plain thing
 -- Requires that 2nd argument type and output type of the combining function are the same
