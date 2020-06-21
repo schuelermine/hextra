@@ -1,3 +1,7 @@
+{-# LANGUAGE ExplicitForAll #-}
+
+module Extra.IO where
+
 processInput :: forall a. (String -> IO a) -> IO a
 processInput = (getLine >>=)
 

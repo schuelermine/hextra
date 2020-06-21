@@ -33,7 +33,7 @@ import Data.Cirq.Basic
 import Data.Cirq.Tools
 import Data.Cirq.Utils
 import Data.Hextra.Tree
-import Data.Hextra.Generalized
+import Data.Hextra.Tree.Generalized
 import Data.Hextra.Nat
 import Data.Hextra.Nat.Finite
 import Data.Hextra.Nat.Internal
