@@ -2,7 +2,7 @@
 
 module Experimental.Functors.Instances where
 
-import Prelude as P
+import qualified Prelude as P
 import Experimental.Functors
 
 instance Functor [] where
@@ -17,16 +17,16 @@ instance ApplicativeFunctor [] where
     unit = [()]
     _ <*> [] = []
     [] <*> _ = []
-    (f:fs) <*> xs = map f xs ++ (fs <*> xs)
+    (f:fs) <*> xs = map f xs P.++ (fs <*> xs)
     _ <:> [] = []
     [] <:> _ = []
-    (x:xs) <:> ys = map (x,) ys ++ (xs <:> ys)
+    (x:xs) <:> ys = map (x,) ys P.++ (xs <:> ys)
     _ *> [] = []
     [] *> _ = []
-    (_:xs) *> ys = ys ++ (xs *> ys)
+    (_:xs) *> ys = ys P.++ (xs *> ys)
     _ <* [] = []
     [] <* _ = []
-    (y:ys) <* xs = map (const y) xs ++ (ys <* xs)
+    (y:ys) <* xs = map (P.const y) xs P.++ (ys <* xs)
 
 instance Apply [] where
     apply = (<*>)
@@ -35,12 +35,12 @@ instance Apply [] where
     after = (<*)
 
 instance DecisiveUnfunctor [] where
-    undecide (Left xs) = map Left xs
-    undecide (Right xs) = map Right xs
+    undecide (P.Left xs) = map P.Left xs
+    undecide (P.Right xs) = map P.Right xs
 
 instance Monad [] where
     return x = [x]
     join [] = []
-    join (x:xs) = x ++ join xs
+    join (x:xs) = x P.++ join xs
     [] >>= _ = []
-    (x:xs) >>= f = f x ++ (xs >>= f)
+    (x:xs) >>= f = f x P.++ (xs >>= f)

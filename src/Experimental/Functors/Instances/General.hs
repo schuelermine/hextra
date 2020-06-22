@@ -2,7 +2,7 @@
 
 module Experimental.Functors.Instances.General where
 
-import Prelude as P
+import qualified Prelude as P
 import Experimental.Functors
 
 instance P.Functor f => Functor f where
