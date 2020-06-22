@@ -36,7 +36,9 @@ deriving instance
     ) => Show (YTree f g a)
 deriving instance 
     ( Read a
-    , forall x y. (Read x, Read y) => Read (f x y), forall z. Read z => Read (g z)) => Read (YTree f g a)
+    , forall x y. (Read x, Read y) => Read (f x y)
+    , forall z. Read z => Read (g z)
+    ) => Read (YTree f g a)
 deriving instance
     ( Eq a
     , forall x y. (Eq x, Eq y) => Eq (f x y)
