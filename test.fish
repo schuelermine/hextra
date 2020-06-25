@@ -1,4 +1,4 @@
-#!bash
+#!fish
 
 cp ./CompileLater.hs ./src/CompileToTest.hs
 cd ./src
