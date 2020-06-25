@@ -5,4 +5,4 @@
 :seti -XTypeApplications
 :seti -XBlockArguments
 
-:set -i./src
+:cd src
