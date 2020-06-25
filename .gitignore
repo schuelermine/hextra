@@ -4,4 +4,5 @@ notesonhaskell.txt
 *.o
 *.hsx
 *.ignore
+*.ignore.*
 CompileToTest.hs
