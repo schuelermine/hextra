@@ -1,1 +1,0 @@
-cp ./NotYet.hs ../src/CompileToTest.hs
