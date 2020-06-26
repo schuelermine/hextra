@@ -141,9 +141,9 @@ magnitude v = P.sqrt P.$ f v where
 -- Vector magnitude
 -- TODO More commenting
 
-takeSafe :: Vector n a -> Fin.Finite ('S n) -> a
-takeSafe (Con x xs) FZ = x
-takeSafe (Con x xs) (FS n) = takeSafe xs n
+getSafe :: Vector n a -> Fin.Finite ('S n) -> a
+getSafe (Con x __) FZ = x
+getSafe (Con _ xs) (FS n) = getSafe xs n
 -- TODO More commenting
 
 deriving instance P.Show a => P.Show (Vector n a)
