@@ -10,6 +10,8 @@ instance Show (InstanceOf Show) where
     showsPrec i (Of a) = showsPrec i a
     show (Of a) = show a
 
+type Showable = InstanceOf Show
+
 type ClassContainer g f = g (InstanceOf f)
 
 data Potentially a where
