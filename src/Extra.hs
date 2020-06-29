@@ -22,3 +22,8 @@ wrapunwrap (wrap, unwrap) f = unwrap . f . wrap
 
 symmetrical :: (a -> b) -> (a -> b -> Bool) -> a -> Bool
 symmetrical f g a = g a (f a)
+
+replace :: Eq a => a -> a -> a -> a
+replace a b c
+    | c == a = b
+    | True = c

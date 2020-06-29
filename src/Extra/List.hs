@@ -2,12 +2,20 @@
 
 module Extra.List where
 
+import Extra
+
 replaceIndex :: forall n a. Integral n => n -> a -> [a] -> [a]
-replaceIndex _ _ [] = []
-replaceIndex 0 a (_:xs) = a : xs
-replaceIndex n a l@(x:xs)
+replaceIndex a = modifyIndex a . const
+
+replaceItem :: forall a. Eq a => a -> a -> [a] -> [a]
+replaceItem a b = (replace a b <$>)
+
+modifyIndex :: forall n a. Integral n => n -> (a -> a) -> [a] -> [a]
+modifyIndex _ _ [] = []
+modifyIndex 0 f (x:xs) = f x : xs
+modifyIndex n f l@(x:xs)
     | n <= 0 = l
-    | True = x : replaceIndex (n - 1) a xs
+    | True = x : modifyIndex (n - 1) f xs
 
 replaceTail :: forall a. [a] -> [a] -> [a]
 replaceTail [] _ = []
