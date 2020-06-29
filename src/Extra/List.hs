@@ -2,17 +2,12 @@
 
 module Extra.List where
 
-genericReplace :: forall n a. Integral n => n -> a -> [a] -> [a]
-genericReplace _ _ [] = []
-genericReplace 0 a (_:xs) = a : xs
-genericReplace n a l@(x:xs)
+replaceIndex :: forall n a. Integral n => n -> a -> [a] -> [a]
+replaceIndex _ _ [] = []
+replaceIndex 0 a (_:xs) = a : xs
+replaceIndex n a l@(x:xs)
     | n <= 0 = l
-    | True = x : genericReplace (n - 1) a xs
-
-replace = genericReplace @Int
--- TODO Debate if this should be Integer instead.
-
-
+    | True = x : replaceIndex (n - 1) a xs
 
 replaceTail :: forall a. [a] -> [a] -> [a]
 replaceTail [] _ = []
