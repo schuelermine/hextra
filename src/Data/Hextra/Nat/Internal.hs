@@ -84,7 +84,7 @@ fromInteger n = case P.compare 0 n of
 -- Negative integers don't raise errors, but are treated like their positive counterparts.
 
 quotRem :: N -> N -> (N, N)
-quotRem = bothmap fromInteger .> P.quotRem <. toInteger
+quotRem = tBothmap fromInteger .> P.quotRem <. toInteger
 -- Division and Modulo of natural numbers
 -- This just converts them to integers, divides, and converts back.
 -- TODO Consider writing explicit definition
