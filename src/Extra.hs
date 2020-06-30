@@ -7,10 +7,10 @@ import Extra.Function
 (%) :: forall i. Integral i => i -> i -> i
 (%) = mod
 
-iff a b c = if a then b else c
+if' a b c = if a then b else c
 
 (#) = elem
-($?) = uncurry3' iff
+($?) = uncurry3' if'
 (!) = seq
 (§) = uncurry
 (<=>) = compare
@@ -24,6 +24,9 @@ symmetrical :: (a -> b) -> (a -> b -> Bool) -> a -> Bool
 symmetrical f g a = g a (f a)
 
 replace :: Eq a => a -> a -> a -> a
-replace a b c
-    | c == a = b
-    | True = c
+replace a b = applyIf (== a) (const b)
+
+applyIf :: (a -> Bool) -> (a -> a) -> a -> a
+applyIf p f a
+    | p a = f a
+    | True = a

@@ -4,6 +4,12 @@ module Extra.List where
 
 import Extra
 
+index :: forall n a. Integral n => [a] -> [(n, a)]
+index = index' 0
+  where
+    index' _ [] = []
+    index' n (x:xs) = (n, x) : index' (n + 1) xs
+
 replaceIndex :: forall n a. Integral n => n -> a -> [a] -> [a]
 replaceIndex a = modifyIndex a . const
 
