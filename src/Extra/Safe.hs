@@ -48,7 +48,7 @@ minimum (z:zs)  = Just $ f z zs where
 
 cycle :: forall a. a -> [a] -> [a]
 cycle a [] = repeat a
-cycle a l  = l ++ Extra.Safe.cycle a l
+cycle a l  = a : l ++ Extra.Safe.cycle a l
 
 quot :: forall a. Integral a => a -> a -> Maybe a
 quot _ 0 = Nothing

@@ -1,7 +1,7 @@
 {-# LANGUAGE RankNTypes, ConstraintKinds, KindSignatures, AllowAmbiguousTypes, ExplicitForAll #-}
 
 module Extra.Tuple where
--- For bothmap and its cousins, consider importing Extra.Bifunctor instead
+-- For tBothmap and its cousins, consider importing Extra.Bifunctor instead
 -- To solely import dupe, write import Extra.Tuple (dupe)
 
 import Data.Kind as Kind
@@ -39,22 +39,22 @@ dupeC a = (a, a)
 -- Like dupe and dupe', but for constrainedly polymorphic values, results in a constrainedly polymorphic tuple
 -- constrained = instance of a given class, or here, in the case of a tuple, containing them
 
-bothmap :: forall a b. (a -> b) -> (a, a) -> (b, b)
-bothmap f (x, y) = (f x, f y)
+tBothmap :: forall a b. (a -> b) -> (a, a) -> (b, b)
+tBothmap f (x, y) = (f x, f y)
 -- Maps a function onto a homogenous tuple.
 -- homogenous = same type in both slots
 
-bothmap' :: forall b x y. (forall a. a -> b) -> (x, y) -> (b, b)
-bothmap' f (x, y) = (f x, f y)
+tBothmap' :: forall b x y. (forall a. a -> b) -> (x, y) -> (b, b)
+tBothmap' f (x, y) = (f x, f y)
 -- Maps a universally polymorphic over any (even heterogenous) tuple.
 -- universally polymorphic = works for any type
 
-bothmapC :: forall b (f :: Type -> Constraint) x y. (f x, f y) => (forall a. f a => a -> b) -> (x, y) -> (b, b)
-bothmapC f (x, y) = (f x, f y)
+tBothmapC :: forall b (f :: Type -> Constraint) x y. (f x, f y) => (forall a. f a => a -> b) -> (x, y) -> (b, b)
+tBothmapC f (x, y) = (f x, f y)
 -- Maps a constrainedly polymorphic over a constrained tuple.
 -- constrained = instance of a given class, or here, in the case of a tuple, containing them
 
-bothmapB :: forall (f :: Type -> Type -> Constraint) x y z w. (f x z, f y w) => (forall a b. f a b => a -> b) -> (x, y) -> (z, w)
-bothmapB f (x, y) = (f x, f y)
+tBothmapB :: forall (f :: Type -> Type -> Constraint) x y z w. (f x z, f y w) => (forall a b. f a b => a -> b) -> (x, y) -> (z, w)
+tBothmapB f (x, y) = (f x, f y)
 -- Maps a coercion function over a tuple of coercibles.
 -- coercion = function from something to something else

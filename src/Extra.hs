@@ -30,3 +30,8 @@ applyIf :: (a -> Bool) -> (a -> a) -> a -> a
 applyIf p f a
     | p a = f a
     | True = a
+
+ifCondition :: (a -> Bool) -> b -> b -> a -> b
+ifCondition p a b x
+    | p x = a
+    | True = b
