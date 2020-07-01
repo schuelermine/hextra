@@ -1,9 +1,9 @@
 {-# LANGUAGE ViewPatterns #-}
 
-module Experimental.Array (Array(), fromFunction, fromTotalFunction, getItem, set, remove, fromList, getItems, slice, genericGetItems, empty, mono) where
+module Experimental.Array (Array(), fromFunction, fromTotalFunction, getItem, set, remove, fromList, getItems, slice, genericGetItems, mono, empty) where
 
 import Data.Hextra.Nat
-import Control.Applicative
+import qualified Control.Applicative as A
 
 newtype Array x = Array { getItem :: N -> Maybe x }
 
@@ -45,6 +45,9 @@ genericGetItems ns a = (getItem a) <$> ns
 mono :: x -> Array x
 mono x = Array . const $ Just x
 
+empty :: Array x
+empty = A.empty
+
 instance Functor Array where
     fmap f a = Array $ \n ->
         f <$> (getItem a n)
@@ -54,7 +57,7 @@ instance Applicative Array where
     f <*> a = Array $ \n ->
         ($) <$> getItem f n <*> getItem a n
 
-instance Alternative Array where
+instance A.Alternative Array where
     empty = Array $ const Nothing
     a <|> b = Array $ \n ->
         case getItem a n of
