@@ -1,7 +1,7 @@
 {-# LANGUAGE ExplicitForAll #-}
 
 module Data.Cirq.Tools where
--- Exports tools for modifying Cirqs after the fact.
+-- ^ Exports tools for modifying Cirqs after the fact.
 
 import Data.Cirq.Base as Cq
 
@@ -12,6 +12,7 @@ cqWhileThen f (Cirq q1) cq2@(Cirq q2) = Cirq $ \a ->
     in  case f a of
             True  -> (cqWhileThen f cq1' cq2, b1)
             False -> (cq2', b2)
+-- ^ Takes arguments Cirq 1 and Cirq 2
 -- Performs Cirq 1 if condition is true, Cirq 2 if false,
 -- returns itself with the new Cirq 1 or just Cirq 2.
 -- Effectively performs Cirq 1 while f is true, then performs Cirq 2.
@@ -24,14 +25,14 @@ cqWhile f (Cirq q1) (Cirq q2) = Cirq $ \a ->
     in  case f a of
             True  -> (cqWhile f cq1' cq2', b1)
             False -> (cq2', b2)
--- Like cqWhileThen, but also performs Cirq 2 even when it's output isn't being returned
+-- ^ Like cqWhileThen, but also performs Cirq 2 even when it's output isn't being returned
 
 cqUntilThen :: forall a b. (a -> Bool) -> Cirq a b -> Cirq a b -> Cirq a b
 cqUntilThen f = cqWhileThen (not . f)
--- Like cqWhileThen, but negates the condition
+-- ^ Like cqWhileThen, but negates the condition
 
 cqUntil :: forall a b. (a -> Bool) -> Cirq a b -> Cirq a b -> Cirq a b
 cqUntil f = cqWhile (not . f)
--- Like cqWhile, but negates the condition
+-- ^ Like cqWhile, but negates the condition
 
 -- ! The concept of Cirq and many functions here are lifted from the Arrow Tutorial from Wikibooks' Hasell book.

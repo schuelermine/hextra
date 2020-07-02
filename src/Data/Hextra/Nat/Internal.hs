@@ -1,7 +1,7 @@
 {-# LANGUAGE NoImplicitPrelude, ExplicitForAll #-}
 
 module Data.Hextra.Nat.Internal where
--- Defines natural numbers and operations on them.
+-- ^ Defines natural numbers and operations on them.
 
 import qualified Prelude as P
 import Extra.Function as Fun
@@ -9,14 +9,14 @@ import Extra.Tuple as Tup
 import Extra.Integral as Int
 
 data N = Z | S N
--- Inductive natural number type
+-- ^ Inductive natural number type
 -- Z is 0, S is the successor function
 -- S is equivalent to (+ 1)
 
 (+) :: N -> N -> N
 Z     + y = y
 (S x) + y = S (x + y)
--- Addition of natural numbers
+-- ^ Addition of natural numbers
 -- Zero is the identity, and therefore, a base case.
 -- Otherwise, recursively peels away S layers from argument,
 -- applies (+) again, and applies S on the whole.
@@ -24,7 +24,7 @@ Z     + y = y
 (*) :: N -> N -> N
 Z     * _ = Z
 (S x) * y = (x * y) + y
--- Multiplication of natural numbers
+-- ^ Multiplication of natural numbers
 -- Explanation 1:
 --  Zero is an annihilator, and therefore, a base case.
 --  Otherwise, recursively peel away S layers from one argument,
@@ -42,7 +42,7 @@ Z     * _ = Z
 Z     - y     = y
 x     - Z     = x
 (S x) - (S y) = x - y
--- Difference between two natural numbers
+-- ^ Difference between two natural numbers
 -- This exploits the fact that,
 -- if you add something to two numbers, the difference stays the same.
 -- Peels away a layer of S on both arguments and then apllies itself again.
@@ -51,7 +51,7 @@ min :: N -> N -> N
 min Z _         = Z
 min _ Z         = Z
 min (S x) (S y) = S (min x y)
--- Finds the smaller of two natural numbers.
+-- ^ Finds the smaller of two natural numbers.
 -- Zero is smaller than any other natural number, this is the recursion base case.
 -- TODO Rewrite the following explanation
 -- When subtracting one, you don't change which number is the smallest,
@@ -61,7 +61,7 @@ max :: N -> N -> N
 max Z y         = y
 max x Z         = x
 max (S x) (S y) = S (max x y)
--- Finds the larger of two natural numbers.
+-- ^ Finds the larger of two natural numbers.
 -- Any other natural number is larger than zero, this is the recursion base case.
 -- TODO Rewrite the following explanation
 -- When subtracting one, you don't change which number is the largest,
@@ -71,7 +71,7 @@ max (S x) (S y) = S (max x y)
 toInteger :: N -> P.Integer
 toInteger Z     = 0
 toInteger (S n) = 1 P.+ toInteger n
--- Converts natural numbers to integers.
+-- ^ Converts natural numbers to integers.
 -- Z converts to zero, and S ^= (+1).
 
 fromInteger :: P.Integer -> N
@@ -79,25 +79,26 @@ fromInteger n = case P.compare 0 n of
     P.GT -> S (fromInteger (n P.+ 1))
     P.EQ -> Z
     P.LT -> S (fromInteger (n P.- 1))
--- Converts integers to natural numbers.
+-- ^ Converts integers to natural numbers.
 -- Reduces value towards 0 while applying S.
 -- Negative integers don't raise errors, but are treated like their positive counterparts.
 
 quotRem :: N -> N -> (N, N)
 quotRem = tBothmap fromInteger .> P.quotRem <. toInteger
--- Division and Modulo of natural numbers
+-- ^ Division and Modulo of natural numbers
 -- This just converts them to integers, divides, and converts back.
--- TODO Consider writing explicit definition
 -- (<.) and (.>) are functions for composing two-argument and one-argument functions (from Extra.Function).
+
+-- TODO Consider writing explicit definition
 
 quot = P.fst .> quotRem
 rem = P.snd .> quotRem
--- Division and Modulo of natural numbers, respectively
+-- ^ Division and Modulo of natural numbers, respectively
 -- Just extracts the first and second elements of the result of quotRem.
 
 difference :: forall n. P.Integral n => N -> N -> n
 difference = (P.-) <. toIntegral
--- Subtraction of two natural numbers. The result is not necessarily a natural number.
+-- ^ Subtraction of two natural numbers. The result is not necessarily a natural number.
 -- For example, 7 - 21 = (-14), which isn't a natural number,
 -- hence a polymorphic type including an integral constraint.
 
@@ -105,7 +106,7 @@ difference = (P.-) <. toIntegral
 
 zero = Z
 
-one = S Z -- One (Zero + 1)
+one = S Z -- ^ One (Zero + 1)
 
 two = S one
 

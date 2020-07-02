@@ -38,4 +38,5 @@ ifCondition :: (a -> Bool) -> b -> b -> a -> b
 ifCondition p a b x
     | p x = a
     | True = b
+    
 -- TODO Think about implementing this as applyEither p (const a) (const b)
