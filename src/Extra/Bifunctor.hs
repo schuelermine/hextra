@@ -1,7 +1,7 @@
 {-# LANGUAGE RankNTypes, ConstraintKinds, MultiParamTypeClasses, KindSignatures, AllowAmbiguousTypes, ExplicitForAll #-}
 
+-- | More general versions of some functions from Extra.Tuple
 module Extra.Bifunctor where
--- ^ More general versions of some functions from Extra.Tuple
 
 import Data.Bifunctor as Bifun
 import Data.Kind as Kind (Constraint)
@@ -18,10 +18,10 @@ bothmap' f x = bimap f f x
 
 bothmapC :: forall g b (f :: * -> Constraint) x y. (f x, f y, Bifunctor g) => (forall a. f a => a -> b) -> g x y -> g b b
 bothmapC f x = bimap f f x
--- Maps a constrainedly polymorphic over a constrained bifunctor.
+-- ^ Maps a constrainedly polymorphic over a constrained bifunctor.
 -- constrained = instance of a given class, or here, in the case of a bifunctor, containing them
 
 bothmapB :: forall g (f :: * -> * -> Constraint) x y z w. (f x z, f y w, Bifunctor g) => (forall a b. f a b => a -> b) -> g x y -> g z w
 bothmapB f x = bimap f f x
--- Maps a coercion function over a bifunctor of coercibles.
+-- ^ Maps a coercion function over a bifunctor of coercibles.
 -- coercion = function from something to something else

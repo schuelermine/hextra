@@ -1,8 +1,8 @@
 {-# LANGUAGE Arrows, ExplicitForAll #-}
 
-module Data.Cirq.Base where
--- ^ Defines Cirq, an Arrow that always produces a replacement for itself.
+-- | Defines Cirq, an Arrow that always produces a replacement for itself.
 -- Useful for iterating through lists, easily combinable thanks to Arrow
+module Data.Cirq.Base where
 
 import Control.Arrow as Arr
 import qualified Control.Category as Cat

@@ -1,8 +1,8 @@
 {-# LANGUAGE DataKinds, GADTs, KindSignatures, NoImplicitPrelude, TypeOperators, ExplicitForAll, PatternSynonyms, TupleSections, StandaloneDeriving, NoStarIsType #-}
 
-module Data.Vector where
--- ^ Defines Vector datatype and associated functions.
+-- | Defines Vector datatype and associated functions.
 -- Useful when you want to make sure things similar to (!!) or take always work
+module Data.Vector where
 
 import Data.Hextra.Nat as Nat
 import Data.Hextra.Nat.Finite as Fin

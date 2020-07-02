@@ -1,8 +1,8 @@
 {-# LANGUAGE ExplicitForAll #-}
 
-module Extra.Safe where
--- ^ Implements safe versions of various functions.
+-- | Implements safe versions of various functions.
 -- Designed to be imported qualified, possibly with the alias Safe
+module Extra.Safe where
 
 -- ? Spinoff another module for functions which, instead of returning Nothing for empty lists, use NonEmpty
 

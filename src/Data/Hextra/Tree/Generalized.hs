@@ -53,5 +53,5 @@ deriving instance (
         forall x y. (Eq  x, Eq  y) => Eq  (f x y),
         forall z. Eq  z => Eq  (g z)
     ) => Ord (YTree f g a)
-    -- ^ This instance is very weird due to the weirdness that is quantified constraints.
-    -- See https://gitlab.haskell.org/ghc/ghc/-/issues/18364#note_283145 for more details.
+-- ^ This instance is very weird due to the weirdness that is quantified constraints.
+-- See https://gitlab.haskell.org/ghc/ghc/-/issues/18364#note_283145 for more details.

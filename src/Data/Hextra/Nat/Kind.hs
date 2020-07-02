@@ -1,8 +1,8 @@
 {-# LANGUAGE DataKinds, TypeFamilies, TypeOperators, NoImplicitPrelude, UndecidableInstances, NoStarIsType #-}
 
-module Data.Hextra.Nat.Kind where
--- ^ Defines versions of (+), (*), (-) as type families (using DataKinds).
+-- | Defines versions of (+), (*), (-) as type families (using DataKinds).
 -- For details on definitions, see Data.Nat.
+module Data.Hextra.Nat.Kind where
 
 import Data.Hextra.Nat (N(Z, S))
 

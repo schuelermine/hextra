@@ -1,7 +1,7 @@
 {-# LANGUAGE ExplicitForAll #-}
 
+-- | Helpful extra functions concerning Maybe
 module Extra.Maybe where
--- ^ Helpful extra functions concerning Maybe
 
 fromNothing :: forall a. a -> Maybe a -> a
 fromNothing x Nothing  = x

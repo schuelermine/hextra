@@ -1,7 +1,7 @@
 {-# LANGUAGE NoImplicitPrelude, ExplicitForAll #-}
 
+-- | Defines natural numbers and operations on them.
 module Data.Hextra.Nat.Internal where
--- ^ Defines natural numbers and operations on them.
 
 import qualified Prelude as P
 import Extra.Function as Fun
@@ -106,7 +106,8 @@ difference = (P.-) <. toIntegral
 
 zero = Z
 
-one = S Z -- ^ One (Zero + 1)
+one = S Z
+-- ^ One (Zero + 1)
 
 two = S one
 

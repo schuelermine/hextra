@@ -1,8 +1,8 @@
 {-# LANGUAGE ExplicitForAll #-}
 
-module Extra.CirqUnpacked where
--- ^ Exports Cirqs run through cqRun, runnable on lists (type like: [a] -> [b]).
+-- | Exports Cirqs run through cqRun, runnable on lists (type like: [a] -> [b]).
 -- See Data.Cirq.Utils for implementation.
+module Extra.CirqUnpacked where
 
 import Data.Cirq as Cq
 

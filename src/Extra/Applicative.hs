@@ -1,7 +1,7 @@
 {-# LANGUAGE ExistentialQuantification, RankNTypes, ExplicitForAll #-}
 
+-- | Defines useful and alternative applicative functions and constructs.
 module Extra.Applicative where
--- ^ Defines useful and alternative applicative functions and constructs.
 
 infixl 5 <:>
 (<:>) :: forall f a b. Applicative f => f a -> f b -> f (a, b)

@@ -1,8 +1,8 @@
 {-# LANGUAGE RankNTypes, ConstraintKinds, KindSignatures, AllowAmbiguousTypes, ExplicitForAll #-}
 
-module Extra.Tuple where
--- ^ For something like tBothmap and its cousins, consider importing Extra.Bifunctor instead
+-- | For something like tBothmap and its cousins, consider importing Extra.Bifunctor instead
 -- To solely import dupe, write import Extra.Tuple (dupe)
+module Extra.Tuple where
 
 import Data.Kind as Kind
 

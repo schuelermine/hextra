@@ -1,7 +1,7 @@
 {-# LANGUAGE ExplicitForAll #-}
 
+-- | Extra functions relating to functions (higher-order functions)
 module Extra.Function where
--- ^ Extra functions relating to functions (higher-order functions)
 
 import Extra.Maybe
 

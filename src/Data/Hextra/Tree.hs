@@ -1,7 +1,7 @@
 {-# LANGUAGE QuantifiedConstraints, StandaloneDeriving, ExistentialQuantification, RankNTypes, UndecidableInstances, FlexibleInstances #-}
 
+-- | Defines Tree types.
 module Data.Hextra.Tree where
--- ^ Defines Tree types.
 
 -- Various tree types:
 

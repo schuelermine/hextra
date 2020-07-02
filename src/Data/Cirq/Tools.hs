@@ -1,7 +1,7 @@
 {-# LANGUAGE ExplicitForAll #-}
 
+-- | Exports tools for modifying Cirqs after the fact.
 module Data.Cirq.Tools where
--- ^ Exports tools for modifying Cirqs after the fact.
 
 import Data.Cirq.Base as Cq
 

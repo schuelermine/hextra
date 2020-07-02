@@ -1,7 +1,7 @@
 {-# LANGUAGE ExplicitForAll #-}
 
+-- | Defines the Stream (pronounce: Sequence) type and related functions
 module Data.Stream where
--- ^ Defines the Stream (pronounce: Sequence) type and related functions
 
 import Extra.Tuple as Tup
 

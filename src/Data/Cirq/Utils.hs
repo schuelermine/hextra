@@ -1,7 +1,7 @@
 {-# LANGUAGE ExplicitForAll #-}
 
+-- | Exports predefined Cirqs.
 module Data.Cirq.Utils where
--- ^ Exports predefined Cirqs.
 
 import Data.Cirq.Base as Cq
 {-# LANGUAGE ExplicitForAll #-}
