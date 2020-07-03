@@ -18,7 +18,7 @@ version:             0.3.0.0
 synopsis:            Generic and niche utility functions and more for Haskell.
 
 -- A longer description of the package.
--- description:
+description:         Hextra is a library containing useful functions etc. that I sometimes use.
 
 -- URL for the project homepage or repository.
 homepage:            https://github.com/schuelermine/hextra
@@ -42,7 +42,7 @@ maintainer:          git@anselmschueler.com
 -- A copyright notice.
 -- copyright:
 
-category:            Extra
+category:            Utils
 
 build-type:          Simple
 
