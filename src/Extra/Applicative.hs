@@ -12,7 +12,7 @@ infixl 5 <:>
 infixl 4 <::>
 (<::>) :: forall f a b. Applicative f => f a -> f b -> f (a, b)
 (<::>) = (<:>)
--- ^ Just (<:>), but with lower precedence
+-- ^ Just (\<:\>), but with lower precedence
 
 infixl 6 <<>>
 (<<>>) :: forall f a. (Applicative f, Monoid a) => f a -> f a -> f a
@@ -30,8 +30,8 @@ unit = pure ()
 
 mkApp :: forall f a b. Functor f => (forall x y. f x -> f y -> f (x, y)) -> f (a -> b) -> f a -> f b
 mkApp (?) f x = fmap (uncurry ($)) $ f ? x
--- ^ Creates a (<*>) definition from a definition of (<:>).
--- mkApp (<:>) = (<*>)
+-- ^ Creates a (\<*\>) definition from a definition of (\<:\>).
+-- mkApp (\<:\>) = (\<*\>)
 
 mkPure :: forall f a. Functor f => (f ()) -> a -> f a
 mkPure u a = fmap (const a) u

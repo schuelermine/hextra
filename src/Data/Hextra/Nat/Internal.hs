@@ -30,7 +30,7 @@ Z     * _ = Z
 --  Otherwise, recursively peel away S layers from one argument,
 --  apply (*) again, and apply (+) with the untouched argument on the whole.
 --  annihilator = element which is always returned by the operation (in this case (*))
---  forall x. x <> annihilator == annihilator
+--  forall x. x \<\> annihilator == annihilator
 -- This works because multiplication is iterated addition.
 -- Explanation 2:
 --  This is an implementation of iterated addition.
@@ -87,7 +87,7 @@ quotRem :: N -> N -> (N, N)
 quotRem = tBothmap fromInteger .> P.quotRem <. toInteger
 -- ^ Division and Modulo of natural numbers
 -- This just converts them to integers, divides, and converts back.
--- (<.) and (.>) are functions for composing two-argument and one-argument functions (from Extra.Function).
+-- (\<.) and (.\>) are functions for composing two-argument and one-argument functions (from Extra.Function).
 
 -- TODO Consider writing explicit definition
 
