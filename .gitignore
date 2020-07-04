@@ -7,3 +7,5 @@ notesonhaskell.txt
 *.ignore
 *.ignore.*
 CompileToTest.hs
+.stack-work
+stack*.yaml.lock

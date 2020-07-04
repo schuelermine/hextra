@@ -1,3 +1,5 @@
+# Contributing
+
 Please add periods to comments that form full sentences (with verbs).
 Please add all modules you define to `CompileLater.hs`.
 
