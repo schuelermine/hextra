@@ -1,0 +1,6 @@
+:set prompt "Hextra> "
+:set prompt-cont "Hextra| "
+
+:seti -XExplicitForAll
+:seti -XTypeApplications
+:seti -XBlockArguments

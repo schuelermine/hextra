@@ -1,6 +1,9 @@
+dist-newstyle
 notesonhaskell.txt
 *.log
 *.hi
 *.o
 *.hsx
 *.ignore
+*.ignore.*
+CompileToTest.hs
