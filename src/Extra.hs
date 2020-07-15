@@ -4,18 +4,8 @@ module Extra where
 
 import Extra.Function
 
-(%) :: forall i. Integral i => i -> i -> i
-(%) = mod
-
 if' a b c = if a then b else c
-
-(#) = elem
 ($?) = uncurry3' if'
-(!) = seq
-(§) = uncurry
-(<=>) = compare
-(?+) = max
-(?-) = min
 
 wrapunwrap :: (a -> b, b -> a) -> (b -> b) -> a -> a
 wrapunwrap (wrap, unwrap) f = unwrap . f . wrap
