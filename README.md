@@ -11,9 +11,9 @@ This library is available
 
 # Repository Structure
 
-The "hot" and "warm" branches are for developement
-The "cold" branch is for the working release (candidate)
-The "frozen" branch is for the final release
+The "hot" and "warm" branches are for developement.  
+The "cold" branch is for the working release (candidate).  
+The "frozen" branch is for the final release.  
 
 # Notes
 
