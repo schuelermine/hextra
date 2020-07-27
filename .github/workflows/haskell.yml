@@ -2,9 +2,15 @@ name: Haskell CI
 
 on:
   push:
-    branches: [ release ]
+    branches: 
+    - warm
+    - cold
+    - frozen
   pull_request:
-    branches: [ release ]
+    branches:
+    - warm
+    - cold
+    - frozen
 
 jobs:
   build:
