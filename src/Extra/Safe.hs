@@ -6,24 +6,6 @@ module Extra.Safe where
 
 -- ? Spinoff another module for functions which, instead of returning Nothing for empty lists, use NonEmpty
 
-head :: forall a. [a] -> Maybe a
-head []    = Nothing
-head (x:_) = Just x
-
-tail :: forall a. [a] -> Maybe [a]
-tail []     = Nothing
-tail (_:xs) = Just xs
-
-last :: forall a. [a] -> Maybe a
-last []     = Nothing
-last (x:[]) = Just x
-last (_:xs) = Extra.Safe.last xs
-
-init :: forall a. [a] -> Maybe [a]
-init []     = Nothing
-init (_:[]) = Just []
-init (x:xs) = (x :) <$> Extra.Safe.init xs
-
 maximum :: forall a. Ord a => [a] -> Maybe a
 maximum []     = Nothing
 maximum (z:zs) = Just $ f z zs where
@@ -42,35 +24,35 @@ minimum (z:zs)  = Just $ f z zs where
         GT -> f x ys
     f x []      = x
 
-(!!) :: forall a i. Integral i => [a] -> i -> Maybe a
-[] !! _     = Nothing
-(x:_) !! 0  = Just x
-(_:xs) !! n = xs Extra.Safe.!! (n - 1)
+(!!?) :: forall a i. Integral i => [a] -> i -> Maybe a
+[] !!? _     = Nothing
+(x:_) !!? 0  = Just x
+(_:xs) !!? n = xs !!? (n - 1)
 
-cycle :: forall a. a -> [a] -> [a]
-cycle a [] = repeat a
-cycle a l  = a : l ++ Extra.Safe.cycle a l
+safeCycle :: forall a. a -> [a] -> [a]
+safeCycle a [] = repeat a
+safeCycle a l  = a : l ++ safeCycle a l
 
-quot :: forall a. Integral a => a -> a -> Maybe a
-quot _ 0 = Nothing
-quot a b = Just $ Prelude.quot a b
+safeQuotRem :: forall a. Integral a => a -> a -> Maybe a
+safeQuotRem _ 0 = Nothing
+safeQuotRem a b = Just $ quotRem a b
 
-rem :: forall a. Integral a => a -> a -> Maybe a
-rem _ 0 = Nothing
-rem a b = Just $ Prelude.rem a b
+safeRem :: forall a. Integral a => a -> a -> Maybe a
+safeRem _ 0 = Nothing
+safeRem a b = Just $ rem a b
 
-quotRem :: forall a. Integral a => a -> a -> Maybe (a, a)
-quotRem _ 0 = Nothing
-quotRem a b = Just $ Prelude.quotRem a b
+safeQuotRem :: forall a. Integral a => a -> a -> Maybe (a, a)
+safeQuotRem _ 0 = Nothing
+safeQuotRem a b = Just $ quotRem a b
 
-div :: forall a. Integral a => a -> a -> Maybe a
-div _ 0 = Nothing
-div a b = Just $ Prelude.div a b
+safeDiv :: forall a. Integral a => a -> a -> Maybe a
+safeDiv _ 0 = Nothing
+safeDiv a b = Just $ div a b
 
-mod :: forall a. Integral a => a -> a -> Maybe a
-mod _ 0 = Nothing
-mod a b = Just $ Prelude.mod a b
+safeMod :: forall a. Integral a => a -> a -> Maybe a
+safeMod _ 0 = Nothing
+safeMod a b = Just $ mod a b
 
-divMod :: forall a. Integral a => a -> a -> Maybe (a, a)
-divMod _ 0 = Nothing
-divMod a b = Just $ Prelude.divMod a b
+safeDivMod :: forall a. Integral a => a -> a -> Maybe (a, a)
+safeDivMod _ 0 = Nothing
+safeDivMod a b = Just $ divMod a b

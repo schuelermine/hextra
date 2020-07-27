@@ -52,3 +52,21 @@ dropUntil :: forall a. (a -> Bool) -> [a] -> [a]
 dropUntil = dropWhile . (not .)
 
 -- TODO replaceUntil functions
+
+safeHead :: forall a. [a] -> Maybe a
+safeHead []    = Nothing
+safeHead (x:_) = Just x
+
+safeTail :: forall a. [a] -> Maybe [a]
+safeTail []     = Nothing
+safeTail (_:xs) = Just xs
+
+safeLast :: forall a. [a] -> Maybe a
+safeLast []     = Nothing
+safeLast (x:[]) = Just x
+safeLast (_:xs) = safeLast xs
+
+safeInit :: forall a. [a] -> Maybe [a]
+safeInit []     = Nothing
+safeInit (_:[]) = Just []
+safeInit (x:xs) = (x :) <$> safeInit xs

@@ -28,3 +28,6 @@ division = toIntegral .> div
 
 modulo :: forall i j. (Integral i, Integral j) => i -> i -> j
 modulo = toIntegral .> mod
+
+modulo' :: forall i. Integral i => i -> i -> i
+modulo' = mod
