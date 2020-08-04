@@ -1,4 +1,4 @@
-{-# LANGUAGE ExplicitForAll, TypeApplications #-}
+{-# LANGUAGE ExplicitForAll #-}
 
 module Extra.List where
 

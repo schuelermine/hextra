@@ -1,4 +1,4 @@
-{-# LANGUAGE DataKinds, ConstraintKinds, GADTs, TypeFamilies, MultiParamTypeClasses, ExplicitForAll, FlexibleInstances, UndecidableInstances, QuantifiedConstraints, RankNTypes, TypeOperators, FunctionalDependencies, ScopedTypeVariables, KindSignatures, NoStarIsType, PolyKinds, StandaloneDeriving #-}
+{-# LANGUAGE DataKinds, ConstraintKinds, TypeFamilies, PolyKinds, TypeOperators, FlexibleInstances #-}
 
 module Extra.Kind.Instance where
 -- TODO More commenting
