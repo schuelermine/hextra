@@ -1,10 +1,6 @@
 {-# LANGUAGE ExplicitForAll #-}
 
-module Extra.Foldable (safeFoldr1) where
-
-import Control.Monad
-import Extra.Function
-import Data.Foldable
+module Extra.Foldable where
 
 safeFoldr1 :: forall f a. Foldable f => (a -> a -> a) -> f a -> Maybe a
 safeFoldr1 f = foldr q Nothing where

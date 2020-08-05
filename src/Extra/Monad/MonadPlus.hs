@@ -1,7 +1,6 @@
 module Extra.Monad.MonadPlus where
 
 import Control.Monad
-import Extra.Function
 
 newtype MonoidPlus f a = MonoidPlus (f a)
 

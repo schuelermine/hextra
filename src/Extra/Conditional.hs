@@ -19,12 +19,12 @@ replace a b = applyIf (== a) (const b)
 applyIf :: forall a. (a -> Bool) -> (a -> a) -> a -> a
 applyIf p f = applyEither p f id
 
-applyEither :: forall a. (a -> Bool) -> (a -> b) -> (a -> b) -> a -> b
+applyEither :: forall a b. (a -> Bool) -> (a -> b) -> (a -> b) -> a -> b
 applyEither p f g a
     | p a = f a
     | True = g a
 
-ifCondition :: forall a. (a -> Bool) -> b -> b -> a -> b
+ifCondition :: forall a b. (a -> Bool) -> b -> b -> a -> b
 ifCondition p a b x
     | p x = a
     | True = b

@@ -2,7 +2,7 @@
 
 module Extra.List where
 
-import Extra
+import Extra.Conditional
 import Data.List
 
 index :: forall n a. Integral n => [a] -> [(n, a)]
