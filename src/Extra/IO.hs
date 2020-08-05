@@ -17,3 +17,8 @@ processPromptRead :: forall a b. Read b => Maybe String -> (b -> IO a) -> IO a
 processPromptRead a m = case a of
     Just p -> putStr p >> processInputRead m
     Nothing -> processInputRead m
+
+prompt :: String -> IO String
+prompt p = do
+    putStr p
+    getLine
