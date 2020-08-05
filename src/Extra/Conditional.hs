@@ -1,6 +1,6 @@
 {-# LANGUAGE NoMonomorphismRestriction, ExplicitForAll #-}
 
-module Extra where
+module Extra.Conditional where
 
 import Extra.Function
 
