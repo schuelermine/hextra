@@ -1,8 +1,8 @@
-{-# LANGUAGE ExplicitForAll, TypeApplications #-}
+{-# LANGUAGE ExplicitForAll #-}
 
 module Extra.List where
 
-import Extra
+import Extra.Conditional
 import Data.List
 
 index :: forall n a. Integral n => [a] -> [(n, a)]
@@ -70,3 +70,12 @@ safeInit :: forall a. [a] -> Maybe [a]
 safeInit []     = Nothing
 safeInit (_:[]) = Just []
 safeInit (x:xs) = (x :) <$> safeInit xs
+
+(!!?) :: forall a i. Integral i => [a] -> i -> Maybe a
+[] !!? _     = Nothing
+(x:_) !!? 0  = Just x
+(_:xs) !!? n = xs !!? (n - 1)
+
+safeCycle :: forall a. a -> [a] -> [a]
+safeCycle a [] = repeat a
+safeCycle a l  = a : l ++ safeCycle a l

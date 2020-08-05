@@ -1,4 +1,4 @@
-{-# LANGUAGE ExistentialQuantification, RankNTypes, ExplicitForAll #-}
+{-# LANGUAGE RankNTypes, ExplicitForAll #-}
 
 -- | Defines useful and alternative applicative functions and constructs.
 module Extra.Applicative where

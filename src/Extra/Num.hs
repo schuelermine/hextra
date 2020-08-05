@@ -2,7 +2,7 @@
 
 module Extra.Num where
 
-import Extra.Function as Fun
+import Extra.Function
 
 (<->) :: forall n. (Num n) => n -> n -> n
 (<->) = abs .> (-)
