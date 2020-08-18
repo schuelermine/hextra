@@ -1,6 +1,6 @@
 {-# LANGUAGE ExplicitForAll #-}
 
-module Extra.IO where
+module Hextra.IO where
 
 processInput :: forall a. (String -> IO a) -> IO a
 processInput = (getLine >>=)
