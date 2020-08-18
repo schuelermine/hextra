@@ -1,4 +1,4 @@
-module Extra.Monad.MonadPlus where
+module Hextra.Monad.MonadPlus where
 
 import Control.Monad
 
