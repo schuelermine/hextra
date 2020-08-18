@@ -1,7 +1,7 @@
 {-# LANGUAGE RankNTypes, ExplicitForAll #-}
 
 -- | Defines useful and alternative applicative functions and constructs.
-module Extra.Applicative where
+module Hextra.Applicative where
 
 infixl 5 <:>
 (<:>) :: forall f a b. Applicative f => f a -> f b -> f (a, b)

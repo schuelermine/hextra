@@ -12,7 +12,7 @@ name:                hextra
 -- PVP summary:      +-+------- breaking API changes
 --                   | | +----- non-breaking API additions
 --                   | | | +--- code changes with no API change
-version:             1.0.0.0
+version:             1.1.0.0
 
 -- A short (one-line) description of the package.
 synopsis:            Generic and niche utility functions and more for Haskell.
@@ -53,7 +53,7 @@ extra-source-files:  CHANGELOG.md, README.md
 
 library
   -- Modules exported by the library.
-  exposed-modules:     Extra.Tuple, Extra.Num, Extra.Monad, Extra.Maybe, Extra.List, Extra.IO, Extra.Integral, Extra.Function, Extra.Foldable, Extra.Conditional, Extra.Bifunctor, Extra.Applicative, Extra.Monad.MonadPlus, Extra.Kind.Constraint
+  exposed-modules:     Hextra.Tuple, Hextra.Num, Hextra.Monad, Hextra.Maybe, Hextra.List, Hextra.IO, Hextra.Integral, Hextra.Function, Hextra.Foldable, Hextra.Conditional, Hextra.Bifunctor, Hextra.Applicative, Hextra.Monad.MonadPlus, Hextra.Kind.Constraint
 
   -- Modules included in this library but not exported.
   -- other-modules:

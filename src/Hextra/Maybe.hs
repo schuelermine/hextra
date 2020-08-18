@@ -1,7 +1,7 @@
 {-# LANGUAGE ExplicitForAll #-}
 
 -- | Helpful extra functions concerning Maybe
-module Extra.Maybe where
+module Hextra.Maybe where
 
 fromNothing :: forall a. a -> Maybe a -> a
 fromNothing x Nothing  = x

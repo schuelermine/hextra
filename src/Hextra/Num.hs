@@ -1,8 +1,8 @@
 {-# LANGUAGE ExplicitForAll #-}
 
-module Extra.Num where
+module Hextra.Num where
 
-import Extra.Function
+import Hextra.Function
 
 (<->) :: forall n. (Num n) => n -> n -> n
 (<->) = abs .> (-)

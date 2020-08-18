@@ -1,6 +1,6 @@
 {-# LANGUAGE ExplicitForAll #-}
 
-module Extra.Foldable where
+module Hextra.Foldable where
 
 safeFoldr1 :: forall f a. Foldable f => (a -> a -> a) -> f a -> Maybe a
 safeFoldr1 f = foldr q Nothing where

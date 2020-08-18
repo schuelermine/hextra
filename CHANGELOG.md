@@ -1,5 +1,9 @@
 # Revision history for hextra
 
+## 1.1.0.0 -- 2020-08-18
+
+* All modules have moved from the `Extra` category to the `Hextra` category.
+
 ## 1.0.0.0 -- 2020-08-07
 
 * Clened up the library massively. It's almost a new library.
