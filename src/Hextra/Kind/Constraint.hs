@@ -1,6 +1,6 @@
 {-# LANGUAGE DataKinds, ConstraintKinds, TypeFamilies, PolyKinds, TypeOperators, FlexibleInstances #-}
 
-module Extra.Kind.Constraint where
+module Hextra.Kind.Constraint where
 -- TODO More commenting
 
 import Data.Kind

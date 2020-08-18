@@ -1,9 +1,9 @@
 {-# LANGUAGE ExplicitForAll #-}
 
-module Extra.Integral where
+module Hextra.Integral where
 
-import Extra.Function
-import Extra.Bifunctor
+import Hextra.Function
+import Hextra.Bifunctor
 
 toIntegral :: forall i j. (Integral i, Integral j) => i -> j
 toIntegral = fromInteger . toInteger

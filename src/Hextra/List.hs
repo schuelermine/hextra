@@ -1,8 +1,8 @@
 {-# LANGUAGE ExplicitForAll #-}
 
-module Extra.List where
+module Hextra.List where
 
-import Extra.Conditional
+import Hextra.Conditional
 import Data.List
 
 index :: forall n a. Integral n => [a] -> [(n, a)]

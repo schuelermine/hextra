@@ -1,6 +1,6 @@
 {-# LANGUAGE ExplicitForAll #-}
 
-module Extra.Monad where
+module Hextra.Monad where
 
 none :: forall m. m () -> m ()
 none = id
