@@ -6,7 +6,7 @@
 
 ## 1.0.0.0 -- 2020-08-07
 
-* Clened up the library massively. It's almost a new library.
+* Cleaned up the library massively. It's almost a new library.
 
 ## 0.4.0.0 -- YYYY-mm-dd
 
