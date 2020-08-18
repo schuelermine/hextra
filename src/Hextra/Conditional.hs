@@ -1,8 +1,8 @@
 {-# LANGUAGE NoMonomorphismRestriction, ExplicitForAll #-}
 
-module Extra.Conditional where
+module Hextra.Conditional where
 
-import Extra.Function
+import Hextra.Function
 
 if' a b c = if a then b else c
 ($?) = uncurry3' if'

@@ -1,7 +1,7 @@
 {-# LANGUAGE RankNTypes, ConstraintKinds, KindSignatures, AllowAmbiguousTypes, ExplicitForAll #-}
 
--- | More general versions of some functions from Extra.Tuple
-module Extra.Bifunctor where
+-- | More general versions of some functions from Hextra.Tuple
+module Hextra.Bifunctor where
 
 import Data.Bifunctor as Bifun
 import Data.Kind as Kind

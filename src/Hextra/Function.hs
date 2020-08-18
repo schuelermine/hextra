@@ -1,9 +1,9 @@
 {-# LANGUAGE ExplicitForAll #-}
 
 -- | Extra functions relating to functions (higher-order functions)
-module Extra.Function where
+module Hextra.Function where
 
-import Extra.Maybe
+import Hextra.Maybe
 
 curry3 :: forall a b c d. ((a, b, c) -> d) -> a -> b -> c -> d
 curry3 f x y z = f (x, y, z)
@@ -53,7 +53,7 @@ infixr 9 >.
 (>.) = flip (<.)
 -- ^ Flipped (\<.)
 
-infixr 9 ?
-(?) :: forall a b c. (a -> b) -> (b -> c) -> a -> c
-(?) = flip (.)
+infixr 9 <.-
+(<.-) :: forall a b c. (a -> b) -> (b -> c) -> a -> c
+(<.-) = flip (.)
 -- ^ Flipped (.)
