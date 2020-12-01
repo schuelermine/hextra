@@ -22,12 +22,12 @@ applyIf p f = applyEither p f id
 applyEither :: forall a b. (a -> Bool) -> (a -> b) -> (a -> b) -> a -> b
 applyEither p f g a
     | p a = f a
-    | True = g a
+    | otherwise = g a
 
 ifCondition :: forall a b. (a -> Bool) -> b -> b -> a -> b
 ifCondition p a b x
     | p x = a
-    | True = b
+    | otherwise = b
 
 -- TODO Think about implementing this as applyEither p (const a) (const b)
 
