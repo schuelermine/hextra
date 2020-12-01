@@ -4,7 +4,9 @@ module Hextra.Conditional where
 
 import Hextra.Function
 
+if' :: forall a. Bool -> a -> a -> a
 if' a b c = if a then b else c
+($?) :: forall a. Bool -> (a, a) -> a
 ($?) = uncurry3' if'
 
 wrapunwrap :: forall a b. (a -> b, b -> a) -> (b -> b) -> a -> a
