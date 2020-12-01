@@ -11,3 +11,7 @@ safeMaximum :: forall f a. (Foldable f, Ord a) => f a -> Maybe a
 safeMaximum = safeFoldr1 max
 safeMinimum :: forall f a. (Foldable f, Ord a) => f a -> Maybe a
 safeMinimum = safeFoldr1 min
+
+weigh :: (Foldable t, Num n) => t (n, a -> Bool) -> a -> n
+weigh ws x = foldr ((+) . f) 0 ws where
+    f (n, p) = if p x then n else 0
