@@ -29,4 +29,10 @@ ifCondition p a b x
     | p x = a
     | True = b
 
+truthTable :: Bool -> Bool -> Bool -> Bool -> Bool -> Bool -> Bool
+truthTable x _ _ _ True  True  = x
+truthTable _ y _ _ True  False = y
+truthTable _ _ z _ False True  = z
+truthTable _ _ _ w False False = w
+
 -- TODO Think about implementing this as applyEither p (const a) (const b)
