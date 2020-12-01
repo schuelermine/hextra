@@ -6,7 +6,7 @@ processInput :: forall a. (String -> IO a) -> IO a
 processInput = (getLine >>=)
 
 processInputRead :: forall a b. Read b => (b -> IO a) -> IO a
-processInputRead f = (getLine >>= f . read)
+processInputRead f = getLine >>= f . read
 
 processPrompt :: forall a. Maybe String -> (String -> IO a) -> IO a
 processPrompt a m = case a of

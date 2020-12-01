@@ -28,7 +28,7 @@ applyIfJustMonoid :: forall a b x. Monoid x => (a -> b) -> (x -> a) -> Maybe x -
 applyIfJustMonoid g f m = g . f $ fromNothing mempty m
 
 combineIfJust' :: forall a b x. (a -> b -> b) -> (x -> a) -> Maybe x -> b -> b
-combineIfJust' g f m b = fromNothing id ((g . f) <$> m) b
+combineIfJust' g f m = fromNothing id (g . f <$> m)
 -- ^ Combines two things where one of them is wrapped in Maybe
 -- If the Maybe thing is Nothing, just return the plain thing
 -- Requires that 2nd argument type and output type of the combining function are the same

@@ -33,7 +33,7 @@ mkApp (?) f x = fmap (uncurry ($)) $ f ? x
 -- ^ Creates a (\<*\>) definition from a definition of (\<:\>).
 -- mkApp (\<:\>) = (\<*\>)
 
-mkPure :: forall f a. Functor f => (f ()) -> a -> f a
+mkPure :: forall f a. Functor f => f () -> a -> f a
 mkPure u a = fmap (const a) u
 -- ^ Creates a pure definition from a definition of unit.
 -- mkPure unit = pure
