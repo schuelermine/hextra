@@ -79,3 +79,11 @@ safeInit (x:xs) = (x :) <$> safeInit xs
 safeCycle :: forall a. a -> [a] -> [a]
 safeCycle a [] = repeat a
 safeCycle a l  = a : l ++ safeCycle a l
+
+foldrListUntil :: forall a b. (a -> b -> b) -> (b -> Bool) -> b -> [a] -> (Bool, b)
+foldrListUntil _ _ y [] = (True, y)
+foldrListUntil f p y (x:xs)
+    | p z = (False, z)
+    | otherwise = foldrListUntil f p z xs
+    where
+    z = f x y
