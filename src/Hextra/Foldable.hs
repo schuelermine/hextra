@@ -45,7 +45,3 @@ foldrUntil6 :: Foldable t => (a -> b -> b) -> (b -> Bool) -> b -> t a -> (Bool, 
 foldrUntil6 f p i = foldr g (True, i) where
     g _ (False, y) = (False, y)
     g x (True, y) =  (not (p (f x y)), f x y)
-
-{-
-[1,2,3,4,5,6,7,8,9]
--}
