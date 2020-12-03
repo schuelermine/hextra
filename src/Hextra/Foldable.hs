@@ -30,3 +30,22 @@ foldrUntil3 :: Foldable t => (a -> b -> b) -> (b -> Bool) -> b -> t a -> (Bool, 
 foldrUntil3 f p i = foldr g (True, i) where
     g _ (False, y) = (False, y)
     g x (True, y) = if p (f x y) then (False, y) else (True, f x y)
+
+foldrUntil4 :: Foldable t => (a -> b -> b) -> (b -> Bool) -> b -> t a -> (Bool, b)
+foldrUntil4 f p i = foldr g (True, i) where
+    g _ (False, y) = (False, y)
+    g x (True, y) = (not (p y), f x y)
+
+foldrUntil5 :: Foldable t => (a -> b -> b) -> (a -> Bool) -> b -> t a -> (Bool, b)
+foldrUntil5 f p i = foldr g (True, i) where
+    g _ (False, y) = (False, y)
+    g x (True, y) = (not (p x), f x y)
+
+foldrUntil6 :: Foldable t => (a -> b -> b) -> (b -> Bool) -> b -> t a -> (Bool, b)
+foldrUntil6 f p i = foldr g (True, i) where
+    g _ (False, y) = (False, y)
+    g x (True, y) =  (not (p (f x y)), f x y)
+
+{-
+[1,2,3,4,5,6,7,8,9]
+-}
