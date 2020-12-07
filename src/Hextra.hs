@@ -1,3 +1,5 @@
+-- ! This is meant as a temporary file to work in. DO NOT SHIP!
+
 {-# LANGUAGE ExplicitForAll #-}
 
 g :: forall a. (a -> Bool) -> a -> Maybe (a -> Bool)
@@ -10,3 +12,4 @@ f _ [] _ = Nothing
 f (<?>) (x:xs) y
     | x <?> y = Just x
     | otherwise = f (<?>) xs y
+
