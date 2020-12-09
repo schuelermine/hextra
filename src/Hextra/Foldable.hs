@@ -22,6 +22,9 @@ weigh ws x = foldr ((+) . f) 0 ws where
 headF :: forall t a. Foldable t => a -> t a -> a
 headF = foldr const
 
+lastF :: forall t a. Foldable t => a -> t a -> a
+lastF = foldl $ flip const
+
 findP :: forall t b. (Foldable t, Functor t) => (b -> Bool) -> t b -> Maybe b
 findP p ys = foldr (<|>) Nothing $ assert1 p <$> ys
 
