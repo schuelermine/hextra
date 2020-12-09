@@ -19,10 +19,10 @@ weigh :: forall t n a. (Foldable t, Num n) => t (n, a -> Bool) -> a -> n
 weigh ws x = foldr ((+) . f) 0 ws where
     f (n, p) = if p x then n else 0
 
-headF :: Foldable t => a -> t a -> a
+headF :: forall t a. Foldable t => a -> t a -> a
 headF = foldr const
 
-findWhere :: (Foldable t, Functor t) => (a1 -> a2 -> Bool) -> t a2 -> a1 -> Maybe a2
+findWhere :: forall t a b. (Foldable t, Functor t) => (a -> b -> Bool) -> t b -> a -> Maybe b
 findWhere p ys x = foldr (<|>) Nothing $ could p x <$> ys
 
 --
