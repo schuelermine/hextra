@@ -15,6 +15,8 @@ safeMaximum = safeFoldr1 max
 safeMinimum :: forall t a. (Foldable t, Ord a) => t a -> Maybe a
 safeMinimum = safeFoldr1 min
 
+-- TODO Consider implementing the above w/ Maybe, (<|>) & co.
+
 weigh :: forall t n a. (Foldable t, Num n) => t (n, a -> Bool) -> a -> n
 weigh ws x = foldr ((+) . f) 0 ws where
     f (n, p) = if p x then n else 0
@@ -28,7 +30,9 @@ lastF = foldl $ flip const
 findP :: forall t b. (Foldable t, Functor t) => (b -> Bool) -> t b -> Maybe b
 findP p ys = foldr (<|>) Nothing $ assert1 p <$> ys
 
---
+-- TODO Reduce amount of these functions
+-- That is, check which are needed, which are variants of other ones, and which are degenerate
+-- Use QuickCheck? (Would need to learn -anselmschueler)
 
 foldrUntil1 :: forall t a b. Foldable t => (a -> b -> b) -> (b -> Bool) -> b -> t a -> (Bool, b)
 foldrUntil1 f p i = foldr g (True, i) where
