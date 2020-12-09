@@ -22,8 +22,8 @@ weigh ws x = foldr ((+) . f) 0 ws where
 headF :: forall t a. Foldable t => a -> t a -> a
 headF = foldr const
 
-findWhere :: forall t a b. (Foldable t, Functor t) => (a -> b -> Bool) -> t b -> a -> Maybe b
-findWhere p ys x = foldr (<|>) Nothing $ could p x <$> ys
+findP :: forall t b. (Foldable t, Functor t) => (b -> Bool) -> t b -> Maybe b
+findP p ys = foldr (<|>) Nothing $ assert1 p <$> ys
 
 --
 

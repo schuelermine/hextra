@@ -14,12 +14,12 @@ catchNothing x = (fromNothing x .)
 -- ^ Composes fromNothing with a function.
 -- Useful to make a function that relies on another function that returns a Maybe
 
-equal :: forall a. Eq a => a -> a -> Maybe a
-equal a b
-    | a == b = Just a
+assert1 :: forall a. (a -> Bool) -> a -> Maybe a
+assert1 p a
+    | p a = Just a
     | otherwise = Nothing
 
-could :: forall a b. (a -> b -> Bool) -> a -> b -> Maybe b
-could p a b
+assert2 :: forall a b. (a -> b -> Bool) -> a -> b -> Maybe b
+assert2 p a b
     | p a b = Just b
     | otherwise = Nothing
