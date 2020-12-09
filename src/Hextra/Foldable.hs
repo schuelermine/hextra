@@ -16,6 +16,11 @@ weigh :: forall t n a. (Foldable t, Num n) => t (n, a -> Bool) -> a -> n
 weigh ws x = foldr ((+) . f) 0 ws where
     f (n, p) = if p x then n else 0
 
+headF :: Foldable t => a -> t a -> a
+headF = foldr const
+
+--
+
 foldrUntil1 :: Foldable t => (a -> b -> b) -> (b -> Bool) -> b -> t a -> (Bool, b)
 foldrUntil1 f p i = foldr g (True, i) where
     g _ (False, y) = (False, y)
