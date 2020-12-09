@@ -2,6 +2,9 @@
 
 module Hextra.Foldable where
 
+import Control.Applicative
+import Hextra.Maybe
+
 safeFoldr1 :: forall t a. Foldable t => (a -> a -> a) -> t a -> Maybe a
 safeFoldr1 f = foldr q Nothing where
     q x Nothing = Just x
@@ -18,6 +21,9 @@ weigh ws x = foldr ((+) . f) 0 ws where
 
 headF :: Foldable t => a -> t a -> a
 headF = foldr const
+
+findWhere :: (Foldable t, Functor t) => (a1 -> a2 -> Bool) -> t a2 -> a1 -> Maybe a2
+findWhere p ys x = foldr (<|>) Nothing $ could p x <$> ys
 
 --
 
