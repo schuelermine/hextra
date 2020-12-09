@@ -40,7 +40,7 @@ mkPure u a = fmap (const a) u
 
 class Monoidal f where
     nilA :: f ()
-    zipA :: f a -> f b -> f (a, b)
+    zipA :: forall a b. f a -> f b -> f (a, b)
 
 mkNilA :: forall f. Functor f => (forall x. x -> f x) -> f ()
 mkNilA p = p ()
