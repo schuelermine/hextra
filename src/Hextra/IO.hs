@@ -10,15 +10,15 @@ processInputRead f = getLine >>= f . read
 
 processPrompt :: forall a. Maybe String -> (String -> IO a) -> IO a
 processPrompt a m = case a of
-    Just p -> putStr p >> processInput m
-    Nothing -> processInput m
+  Just p -> putStr p >> processInput m
+  Nothing -> processInput m
 
 processPromptRead :: forall a b. Read b => Maybe String -> (b -> IO a) -> IO a
 processPromptRead a m = case a of
-    Just p -> putStr p >> processInputRead m
-    Nothing -> processInputRead m
+  Just p -> putStr p >> processInputRead m
+  Nothing -> processInputRead m
 
 prompt :: String -> IO String
 prompt p = do
-    putStr p
-    getLine
+  putStr p
+  getLine

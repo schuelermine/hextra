@@ -4,7 +4,7 @@
 module Hextra.Maybe where
 
 fromNothing :: forall a. a -> Maybe a -> a
-fromNothing x Nothing  = x
+fromNothing x Nothing = x
 fromNothing _ (Just y) = y
 -- ^ Extracts a value from a Maybe value,
 -- uses replacement value in case of Nothing.
@@ -16,10 +16,10 @@ catchNothing x = (fromNothing x .)
 
 assert1 :: forall a. (a -> Bool) -> a -> Maybe a
 assert1 p a
-    | p a = Just a
-    | otherwise = Nothing
+  | p a = Just a
+  | otherwise = Nothing
 
 assert2 :: forall a b. (a -> b -> Bool) -> a -> b -> Maybe b
 assert2 p a b
-    | p a b = Just b
-    | otherwise = Nothing
+  | p a b = Just b
+  | otherwise = Nothing

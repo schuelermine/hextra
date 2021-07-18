@@ -1,4 +1,8 @@
-{-# LANGUAGE RankNTypes, ConstraintKinds, KindSignatures, AllowAmbiguousTypes, ExplicitForAll #-}
+{-# LANGUAGE AllowAmbiguousTypes #-}
+{-# LANGUAGE ConstraintKinds #-}
+{-# LANGUAGE ExplicitForAll #-}
+{-# LANGUAGE KindSignatures #-}
+{-# LANGUAGE RankNTypes #-}
 
 -- | For something like tBothmap and its cousins, consider importing Hextra.Bifunctor instead
 -- To solely import dupe, write import Hextra.Tuple (dupe)
@@ -8,16 +12,16 @@ import Data.Kind as Kind
 
 tSort :: forall a. Ord a => (a, a) -> (a, a)
 tSort (x, y) = case compare x y of
-    LT -> (x, y)
-    EQ -> (x, y)
-    GT -> (y, x)
+  LT -> (x, y)
+  EQ -> (x, y)
+  GT -> (y, x)
 -- ^ Sorts a tuple
 
 tSort' :: forall a. Ord a => (a, a) -> (a, a)
 tSort' (x, y) = case compare x y of
-    LT -> (y, x)
-    EQ -> (x, y)
-    GT -> (x, y)
+  LT -> (y, x)
+  EQ -> (x, y)
+  GT -> (x, y)
 -- ^ Sorts a tuple, reversed
 
 tReverse :: forall a b. (a, b) -> (b, a)

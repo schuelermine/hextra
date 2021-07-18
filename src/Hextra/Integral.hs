@@ -2,8 +2,8 @@
 
 module Hextra.Integral where
 
-import Hextra.Function
 import Hextra.Bifunctor
+import Hextra.Function
 
 toIntegral :: forall i j. (Integral i, Integral j) => i -> j
 toIntegral = fromInteger . toInteger

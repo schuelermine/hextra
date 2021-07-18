@@ -34,26 +34,31 @@ combineIfJust' g f m = fromNothing id (g . f <$> m)
 -- Requires that 2nd argument type and output type of the combining function are the same
 
 infixr 9 <.
+
 (<.) :: forall b c a. (b -> b -> c) -> (a -> b) -> a -> a -> c
 (<.) f g x y = f (g x) (g y)
 -- ^ Applies a unary function on the inputs of a binary function
 
 infixr 9 .>
+
 (.>) :: forall b c a. (b -> c) -> (a -> a -> b) -> a -> a -> c
 (.>) f g x y = f (g x y)
 -- ^ Applies a unary function on the output of a binary function
 
 infixr 9 .<
+
 (.<) :: forall a b c. (a -> a -> b) -> (b -> c) -> a -> a -> c
 (.<) = flip (.>)
 -- ^ Flipped (.\>)
 
 infixr 9 >.
+
 (>.) :: forall a b c. (a -> b) -> (b -> b -> c) -> a -> a -> c
 (>.) = flip (<.)
 -- ^ Flipped (\<.)
 
 infixr 9 <.-
+
 (<.-) :: forall a b c. (a -> b) -> (b -> c) -> a -> c
 (<.-) = flip (.)
 -- ^ Flipped (.)
